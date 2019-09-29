@@ -4,12 +4,10 @@ namespace App\Repositories;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
-use Monolog\Handler\IFTTTHandler;
 use Prettus\Repository\Eloquent\BaseRepository;
 use Prettus\Repository\Criteria\RequestCriteria;
 use App\Interfaces\UserRepository;
 use App\Models\User;
-use App\Validators\UserValidator;
 
 /**
  * Class UserRepositoryEloquent.
