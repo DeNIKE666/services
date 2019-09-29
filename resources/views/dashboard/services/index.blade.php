@@ -10,56 +10,53 @@
         <!-- Dashboard Box -->
         <div class="col-xl-12">
             <div class="dashboard-box margin-top-0">
-
+                <!-- Content -->
                 <div class="content">
-
+                    <!-- dashboard-box -->
                     <ul class="dashboard-box-list">
-
-
-                        @foreach ($services as $service)
-
+                        @forelse ($services as $service)
                             <li>
                                 <!-- Job Listing -->
-                                <div class="job-listing">
+                                <div class="job-listing width-adjustment">
 
                                     <!-- Job Listing Details -->
                                     <div class="job-listing-details">
 
                                         <!-- Details -->
                                         <div class="job-listing-description">
-                                            <h3 class="job-listing-title"><a href="#">{{ $service->title }}
-                                                </a> <span class="dashboard-status-button green">{{ $service->categories->parent->title }}</span>
-                                            </h3>
+                                            <h3 class="job-listing-title"><a href="#">{{ $service->title }}</a> <span class="dashboard-status-button yellow">{{ $service->categories->parent->title }}</span></h3>
 
+                                            <p>{{ $service->limitBody(200) }}</p>
                                             <!-- Job Listing Footer -->
                                             <div class="job-listing-footer">
                                                 <ul>
-                                                    <li><i class="icon-material-outline-date-range"></i> Дата публикации: {{ $service->created_at->diffForHumans()  }}</li>
-                                                    <li><i class="icon-material-outline-date-range"></i> Истекает: 9</li>
+                                                    <li><i class="icon-material-outline-access-time"></i> 23 hours left</li>
                                                 </ul>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
 
+                                <!-- Task Details -->
+                                <ul class="dashboard-task-info">
+                                    <li><strong>{{ $service->views }}</strong><span>просмотров</span></li>
+                                </ul>
+
                                 <!-- Buttons -->
                                 <div class="buttons-to-right always-visible">
-                                    <a href="dashboard-manage-candidates.html" class="button ripple-effect"><i class="icon-material-outline-supervisor-account"></i> Manage Candidates <span class="button-info">0</span></a>
-                                    <a href="#" class="button gray ripple-effect ico" data-tippy-placement="top" data-tippy="" data-original-title="Edit"><i class="icon-feather-edit"></i></a>
-                                    <a href="#" class="button gray ripple-effect ico" data-tippy-placement="top" data-tippy="" data-original-title="Remove"><i class="icon-feather-trash-2"></i></a>
+                                    <a href="{{ route('service.edit', $service->id) }}" class="button gray ripple-effect ico"><i class="fal fa-edit"></i></a>
+                                    <a href="{{ route('service.delete', $service->id) }}" class="button gray ripple-effect ico"><i class="fal fa-trash-alt"></i></a>
                                 </div>
                             </li>
-
-
-                        @endforeach
-
+                        @empty
+                            НЕТ
+                        @endforelse
                     </ul>
+
+                    {{ $services->links('__includes.dashboard.paginator') }}
+
                 </div>
-
             </div>
-
-            {{ $services->links('__includes.dashboard.paginator') }}
-
         </div>
 
     </div>

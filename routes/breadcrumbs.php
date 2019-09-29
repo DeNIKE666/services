@@ -61,6 +61,11 @@ Breadcrumbs::for('create', function ($trail) {
     $trail->push('Добавление услуги', route('service.create'));
 });
 
+Breadcrumbs::for('edit', function ($trail, $service) {
+    $trail->parent('service');
+    $trail->push('Редактирвоание услуги', route('service.edit', $service));
+});
+
 Breadcrumbs::for('profile', function ($trail) {
     $trail->parent('dashboard');
     $trail->push('Профиль', route('profile'));

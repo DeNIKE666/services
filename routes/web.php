@@ -13,9 +13,17 @@ Route::prefix('/')->namespace('Frontend')->group(function () {
 });
 
 Route::prefix('dashboard')->namespace('Dashboard')->middleware('auth')->group(function (){
+
     Route::get('/', 'DashboardController@index')->name('dashboard');
 
-    Route::resource('service' ,'ServicesController');
+    Route::prefix('/services')->group(function () {
+        Route::get('/', 'ServicesController@index')->name('service.index');
+        Route::get('/create', 'ServicesController@create')->name('service.create');
+        Route::post('/store' , 'ServicesController@store')->name('service.store');
+        Route::get('/edit/{id}' , 'ServicesController@edit')->name('service.edit');
+        Route::post('/update/{id}' , 'ServicesController@update')->name('service.update');
+        Route::get('/delete/{id}' , 'ServicesController@delete')->name('service.delete');
+    });
 
     Route::prefix('account')->group(function () {
         Route::any('/profile' , 'ProfileController@index')->name('profile');
@@ -35,7 +43,3 @@ Route::prefix('admin')->namespace('Admin')->group(function () {
 });
 
 Auth::routes();
-
-Route::prefix('hash')->group(function() {
-    Route::get('/', 'HashController@show');
-});

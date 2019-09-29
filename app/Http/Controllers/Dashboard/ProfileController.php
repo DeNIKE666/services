@@ -6,7 +6,6 @@ use App\Models\User;
 use App\Repositories\UserRepositoryEloquent;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use Illuminate\Support\Facades\Storage;
 
 class ProfileController extends Controller
 {
@@ -19,14 +18,14 @@ class ProfileController extends Controller
 
     public function index(Request $request) {
 
-        if ($request->isMethod('post')) {
-
+        if ($request->isMethod('post'))
+        {
             $request->validate([
                 'name' => ['required'],
                 'email' => ['required'],
             ]);
 
-           $avatar = $this->user->deleteAvatar()->updateAvatar();
+            $avatar = $this->user->deleteAvatar()->updateAvatar();
 
             $request->user()->update([
                 'name' => $request->input('name'),
