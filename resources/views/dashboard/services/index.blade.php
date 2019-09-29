@@ -6,7 +6,6 @@
 
 @section('content')
     <div class="row">
-
         <!-- Dashboard Box -->
         <div class="col-xl-12">
             <div class="dashboard-box margin-top-0">
@@ -18,14 +17,11 @@
                             <li>
                                 <!-- Job Listing -->
                                 <div class="job-listing width-adjustment">
-
                                     <!-- Job Listing Details -->
                                     <div class="job-listing-details">
-
                                         <!-- Details -->
                                         <div class="job-listing-description">
                                             <h3 class="job-listing-title"><a href="#">{{ $service->title }}</a> <span class="dashboard-status-button yellow">{{ $service->categories->parent->title }}</span></h3>
-
                                             <p>{{ $service->limitBody(200) }}</p>
                                             <!-- Job Listing Footer -->
                                             <div class="job-listing-footer">
@@ -36,12 +32,10 @@
                                         </div>
                                     </div>
                                 </div>
-
                                 <!-- Task Details -->
                                 <ul class="dashboard-task-info">
                                     <li><strong>{{ $service->views }}</strong><span>просмотров</span></li>
                                 </ul>
-
                                 <!-- Buttons -->
                                 <div class="buttons-to-right always-visible">
                                     <a href="{{ route('service.edit', $service->id) }}" class="button gray ripple-effect ico"><i class="fal fa-edit"></i></a>
@@ -49,14 +43,15 @@
                                 </div>
                             </li>
                         @empty
-                            НЕТ
+                           <p class="padding-top-20 padding-bottom-20" style="text-align: center; margin-top: ">НЕТ УСЛУГ</p>
                         @endforelse
                     </ul>
-
-                    {{ $services->links('__includes.dashboard.paginator') }}
-
                 </div>
+
             </div>
+
+            {{ $services->links('__includes.dashboard.paginator') }}
+
         </div>
 
     </div>

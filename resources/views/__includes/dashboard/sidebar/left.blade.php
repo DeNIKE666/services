@@ -24,8 +24,9 @@
                         <li><a href="{{ route('profile') }}"><i class="fal fa-user"></i> Профиль</a></li>
                         <li class=""><a href=""><i class="fal fa-list-ul"></i>  Услуги</a>
                             <ul>
-                                <li><a href="{{ route('service.index') }}"><i class="fal fa-list-ul"></i> Мои услуги</a></li>
+                                <li><a href="{{ route('service.index') }}"><i class="fad fa-ball-pile"></i> Мои услуги</a></li>
                                 <li><a href="{{ route('service.create') }}"><i class="fal fa-layer-plus"></i> Добавить услугу</a></li>
+                                <li><a href="{{ route('service.deletes') }}"><i class="fal fa-trash-alt"></i> Удалить мои услуги</a></li>
                             </ul>
                         </li>
                     </ul>

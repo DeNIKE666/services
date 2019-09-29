@@ -9,6 +9,11 @@ use App\Models\Service\Service;
 
 class ServiceRepositoryEloquent extends BaseRepository implements  CacheableInterface
 {
+
+    protected $cacheMinutes = 90;
+
+    protected $cacheOnly = ['all'];
+
     use CacheableRepository;
 
     protected $fieldSearchable = [
@@ -24,6 +29,16 @@ class ServiceRepositoryEloquent extends BaseRepository implements  CacheableInte
     public function boot()
     {
         $this->pushCriteria(app('Prettus\Repository\Criteria\RequestCriteria'));
+    }
+
+    public function deleteImage($image) {
+        \Storage::disk('public')->delete($image);
+        return $this;
+    }
+
+    public function deleteService($id)
+    {
+        return $this->delete($id);
     }
 
 }

@@ -22,7 +22,7 @@ class SelfServiceCriteria implements CriteriaInterface
      */
     public function apply($model, RepositoryInterface $repository)
     {
-        $model = $model->where('user_id', \Auth::id())
+        $model = $model->whereIn('user_id', [auth()->user()->id])
                         ->orderBy('created_at', 'desc');
         return $model;
     }

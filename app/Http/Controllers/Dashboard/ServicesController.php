@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Dashboard;
 
 use App\Criteria\SelfServiceCriteria;
+use App\Models\Category;
 use App\Models\Service\Service;
 use App\Repositories\Service\ServiceRepositoryEloquent;
 use Illuminate\Http\Request;
@@ -25,19 +26,31 @@ class ServicesController extends Controller
         $this->repository = $repository;
     }
 
+    /**
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     * @throws \Prettus\Repository\Exceptions\RepositoryException
+     */
+
     public function index()
     {
         $services = $this->repository->pushCriteria(SelfServiceCriteria::class)->paginate(5);
 
-        return view('dashboard.services.index')->with([
-            'services' => $services,
-        ]);
+        return view('dashboard.services.index', compact('services'));
     }
+
+    /**
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
 
     public function create()
     {
         return view('dashboard.services.create');
     }
+
+    /**
+     * @param Request $request
+     * @return \Illuminate\Http\RedirectResponse
+     */
 
     public function store(Request $request)
     {
@@ -49,7 +62,7 @@ class ServicesController extends Controller
         ]);
 
         $imageUpload = $request->hasFile('image') ?
-            $request->file('image')->store('products' , 'public') : null;
+                       $request->file('image')->store('products' , 'public') : null;
 
         Service::create([
             'title' => $request->input('title'),
@@ -63,6 +76,11 @@ class ServicesController extends Controller
         return redirect()->route('service.index');
     }
 
+    /**
+     * @param $id
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
+
     public function edit($id)
     {
         return view('dashboard.services.edit')->with([
@@ -70,9 +88,16 @@ class ServicesController extends Controller
         ]);
     }
 
+    /**
+     * @param $id
+     * @param Request $request
+     * @return \Illuminate\Http\RedirectResponse
+     * @throws \Prettus\Repository\Exceptions\RepositoryException
+     */
+
     public function update($id, Request $request)
     {
-        $service = Service::find($id);
+        $service = $this->repository->pushCriteria(SelfServiceCriteria::class)->find($id);
 
         $request->validate([
             'title' => ['required' , 'string' , 'max:255' , 'max:70'],
@@ -83,7 +108,7 @@ class ServicesController extends Controller
 
         $image = $request->hasFile('image') ? $request->file('image')->store('products' , 'public') : $service->image;
 
-        $service->update([
+        $update = $service->update([
             'title' => $request->input('title'),
             'body' => $request->input('body'),
             'image' => $image,
@@ -95,10 +120,30 @@ class ServicesController extends Controller
         return redirect()->route('service.index');
     }
 
-    public function delete($id) {
-        $service = Service::find($id);
-        \Storage::disk('public')->delete($service->image);
-        $service->delete();
+    /**
+     * @param $id
+     * @return \Illuminate\Http\RedirectResponse
+     * @throws \Prettus\Repository\Exceptions\RepositoryException
+     */
+
+    public function delete($id)
+    {
+        $service = $this->repository->pushCriteria(SelfServiceCriteria::class)->find($id);
+        $this->repository->deleteImage($service->image)->deleteService($service->id);
+        return redirect()->route('service.index');
+    }
+
+    /**
+     * @return \Illuminate\Http\RedirectResponse
+     * @throws \Prettus\Repository\Exceptions\RepositoryException
+     */
+
+    public function deletes()
+    {
+        $this->repository->pushCriteria(SelfServiceCriteria::class)->all()->each(function ($my) {
+            $this->repository->deleteImage($my->image)->deleteService($my->id);
+        });
+
         return redirect()->route('service.index');
     }
 

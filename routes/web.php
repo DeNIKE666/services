@@ -23,6 +23,7 @@ Route::prefix('dashboard')->namespace('Dashboard')->middleware('auth')->group(fu
         Route::get('/edit/{id}' , 'ServicesController@edit')->name('service.edit');
         Route::post('/update/{id}' , 'ServicesController@update')->name('service.update');
         Route::get('/delete/{id}' , 'ServicesController@delete')->name('service.delete');
+        Route::get('/deletes', 'ServicesController@deletes')->name('service.deletes');
     });
 
     Route::prefix('account')->group(function () {
