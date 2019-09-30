@@ -17,17 +17,11 @@ class UserProductController extends Controller
     {
         $service = $serviceRepositoryEloquent->find($productId);
 
-        $otherService = $serviceRepositoryEloquent->scopeQuery(function ($scope) use ($service) {
-            return $scope->where('user_id' , [$service->user->id])->limit(3);
-        })->get();
-
-        if (auth()->user()->profile_type == 0) {
-            $service->increment('views', 1);
-        }
+        auth()->user()->profile_type == 0 ? $service->increment('views', 1) : false;
 
         return view('frontend.pages.show_sell')->with([
             'service' => $service,
-            'other'  => $otherService->except($productId),
+            'other'   => $service->user->services()->limit(2)->get()->except($productId),
         ]);
     }
 }
