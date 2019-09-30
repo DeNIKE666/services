@@ -64,6 +64,9 @@ class ServicesController extends Controller
         $imageUpload = $request->hasFile('image') ?
                        $request->file('image')->store('products' , 'public') : null;
 
+        $FileUpload = $request->hasFile('file') ?
+            $request->file('file')->store('files' , 'public') : null;
+
         Service::create([
             'title' => $request->input('title'),
             'body' => $request->input('body'),
@@ -71,6 +74,7 @@ class ServicesController extends Controller
             'category_id' => $request->input('category_id'),
             'user_id' => auth()->user()->id,
             'amount' => $request->input('amount'),
+            'file' => $FileUpload,
         ]);
 
         return redirect()->route('service.index');
@@ -106,15 +110,21 @@ class ServicesController extends Controller
             'body' => ['required' , 'string'  , 'max:1000'],
         ]);
 
-        $image = $request->hasFile('image') ? $request->file('image')->store('products' , 'public') : $service->image;
+        if ($request->hasAny(['image' , 'file'])) {
+            if ($this->repository->serviceFind($service)->dropFiles()) {
+                $image = $request->file('image')->store('products', 'public');
+                $file = $request->file('file')->store('files', 'public');
+            }
+        }
 
         $update = $service->update([
             'title' => $request->input('title'),
             'body' => $request->input('body'),
-            'image' => $image,
+            'image' => $image ?? $service->image,
             'category_id' => $request->input('category_id'),
             'user_id' => auth()->user()->id,
             'amount' => (int) $request->input('amount'),
+            'file' => $file ?? $service->file,
         ]);
 
         return redirect()->route('service.index');
@@ -129,8 +139,10 @@ class ServicesController extends Controller
     public function delete($id)
     {
         $service = $this->repository->pushCriteria(SelfServiceCriteria::class)->find($id);
-        $this->repository->deleteImage($service->image)->deleteService($service->id);
-        return redirect()->route('service.index');
+
+        if ($this->repository->serviceFind($service)->dropFiles()->deleteService()) {
+            return redirect()->route('service.index');
+        };
     }
 
     /**
@@ -140,8 +152,8 @@ class ServicesController extends Controller
 
     public function deletes()
     {
-        $this->repository->pushCriteria(SelfServiceCriteria::class)->all()->each(function ($my) {
-            $this->repository->deleteImage($my->image)->deleteService($my->id);
+        $this->repository->pushCriteria(SelfServiceCriteria::class)->all()->each(function ($service) {
+            $this->repository->serviceFind($service)->dropFiles()->deleteService();
         });
 
         return redirect()->route('service.index');

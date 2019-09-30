@@ -29,7 +29,7 @@ class FrontendControllerCategories extends Controller
         $ids = Category::descendantsOf($id)->pluck('id');
 
         $services =$this->repository->scopeQuery(function ($query) use ($ids, $id) {
-            return $query->whereIn('category_id', $ids)->orWhere('category_id', $id);
+            return $query->whereIn('category_id', $ids)->orWhere('category_id', $id)->orderBy('views', 'desc');
         })->paginate();
 
         return view('frontend.pages.categories')->with([

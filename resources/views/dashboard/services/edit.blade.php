@@ -53,6 +53,21 @@
                                 </div>
                             </div>
 
+                            <div class="col-xl-12">
+                                <div class="uploadButton margin-bottom-30">
+                                    <input class="uploadButton-input" value="342423" type="file" name="file" id="upload">
+                                    <label class="uploadButton-button ripple-effect" for="upload">Загрузить</label>
+                                    <span class="uploadButton-file-name">
+                                        @if ($service->file())
+                                            <a href="{{ asset($service->file()) }}">прикреплённый файл</a>
+                                        @else
+                                            прикрепите файл инструкций пользователю для ознакомлений
+                                        @endif
+                                    </span>
+                                </div>
+                            </div>
+
+
                             <div class="col-xl-12 margin-bottom-20">
                                 <button type="submit" class="button ripple-effect big"><i class="fal fa-edit"></i> Обновить данные</button>
                             </div>

@@ -37,38 +37,32 @@
         <!-- Full Page Content -->
         <div class="full-page-content-container" data-simplebar>
             <div class="full-page-content-inner">
-
                 <!-- Tasks Container -->
                 <div class="tasks-list-container tasks-grid-layout">
-
                 @foreach ($services as $serviceItem)
-
                     <!-- Task -->
-                    <a href="single-task-page.html" class="task-listing">
-                        <!-- Job Listing Details -->
-                        <div class="task-listing-details">
-
-                            <!-- Details -->
-                            <div class="task-listing-description">
-                                <h3 class="task-listing-title">{{ $serviceItem->title }}</h3>
-                                <p class="text-muted">{{ $serviceItem->body }}</p>
-                            </div>
-
-                        </div>
-
-                        <div class="task-listing-bid">
-                            <div class="task-listing-bid-inner">
-                                <div class="task-offers">
-                                    <strong>{{ $serviceItem->amount }}</strong>
-                                    <span>стоимость</span>
+                        <a href="{{ route('user.sell', $serviceItem) }}" class="task-listing">
+                            <!-- Job Listing Details -->
+                            <div class="task-listing-details">
+                                <!-- Details -->
+                                <div class="task-listing-description">
+                                    <h3 class="task-listing-title">{{ $serviceItem->title }}</h3>
+                                    <p class="text-muted">{{ $serviceItem->limitBody(100) }}</p>
                                 </div>
-                                <span class="button button-sliding-icon ripple-effect">Заказать <i class="icon-material-outline-arrow-right-alt"></i></span>
                             </div>
-                        </div>
-                    </a>
 
+                            <div class="task-listing-bid">
+                                <div class="task-listing-bid-inner">
+                                    <div class="task-offers">
+                                        <strong>{{ $serviceItem->amount }}</strong>
+                                        <span>стоимость</span>
+                                    </div>
+                                    <span class="button button-sliding-icon ripple-effect">Заказать <i
+                                                class="icon-material-outline-arrow-right-alt"></i></span>
+                                </div>
+                            </div>
+                        </a>
                     @endforeach
-
                 </div>
                 <!-- Tasks Container / End -->
 

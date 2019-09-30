@@ -6445,8 +6445,8 @@ table.basic-table {
 }
 
 .accordion__item > .accordion-header:after {
-    content: "\e957";
-    font-family: Material-Icons;
+    content: "\f13a";
+    font-family: "Font Awesome 5 Pro";
     font-size: 19px;
     float: right;
     position: relative;

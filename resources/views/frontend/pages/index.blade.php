@@ -97,6 +97,7 @@
                     <div class="listings-container compact-list-layout margin-top-35">
                         @foreach ($services as $service)
 
+
                             <!-- Job Listing -->
                                 <a href="{{ route('user.sell', $service->id) }}" class="job-listing with-apply-button">
 
@@ -120,7 +121,7 @@
                                             <div class="job-listing-footer">
                                                 <ul>
                                                     <li><i class="fal fa-star"></i> рейтинг {{ $service->user->rating }}</li>
-                                                    <li><i class="fal fa-business-time"></i> истекает через 20 часов</li>
+                                                    <li><i class="fal fa-business-time"></i> {{ $service->created_at->diffForHumans() }}</li>
                                                 </ul>
                                             </div>
                                         </div>

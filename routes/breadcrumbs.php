@@ -24,6 +24,11 @@ Breadcrumbs::for('frontend', function ($trail) {
     $trail->push('Главная', route('frontend.index'));
 });
 
+Breadcrumbs::for('info', function ($trail) {
+    $trail->parent('frontend');
+    $trail->push('Информация', route('frontend.info'));
+});
+
 Breadcrumbs::for('user.sell', function ($trail , $request) {
     $trail->parent('frontend');
     $trail->push('Просмотр услуги пользователя', route('user.sell' , ['id' => $request->id , 'productId' => $request->productId]));

@@ -2,6 +2,7 @@
 
 namespace App\Criteria;
 
+use Carbon\Carbon;
 use Prettus\Repository\Contracts\CriteriaInterface;
 use Prettus\Repository\Contracts\RepositoryInterface;
 
@@ -23,8 +24,9 @@ class ServicesFrontendLastCriteria implements CriteriaInterface
     public function apply($model, RepositoryInterface $repository)
     {
         $model = $model->where('amount' , '>', 0)
-                      ->orderBy('id' ,'desc')->limit(5);
-
+                      ->orderBy('id' ,'desc')
+                      ->whereStatus(1)
+                      ->limit(10);
         return $model;
     }
 }

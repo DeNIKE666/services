@@ -3,6 +3,8 @@
 namespace App\Models\Service;
 
 use App\Models\User;
+use Carbon\Carbon;
+use Carbon\CarbonImmutable;
 use Illuminate\Database\Eloquent\Model;
 use Prettus\Repository\Traits\TransformableTrait;
 use Prettus\Repository\Contracts\Transformable;
@@ -23,21 +25,24 @@ class Service extends Model implements Transformable
         'amount',
         'user_id',
         'category_id',
-        'expired_at',
+        'file',
     ];
 
-    protected $casts = [
-        'created_at' => 'datetime',
+    protected $dates = [
+        'created_at',
+        'updated_at'
     ];
+
+    public function file() {
+        return $this->file !== null ? 'storage/' . $this->file : null;
+    }
 
     /**
-     * @param $value
      * @return string
      */
 
     public function image() {
-        return $this->image !== null ? 'storage/' . $this->image :
-                       asset('assets/frontend/img/no_image.png');
+        return $this->image !== null ? 'storage/' . $this->image : asset('assets/frontend/img/no_image.png');
     }
 
     public function limitBody($value) {
@@ -58,6 +63,10 @@ class Service extends Model implements Transformable
 
     public function categories() {
         return $this->hasOne('App\Models\Category' , 'id' , 'category_id');
+    }
+
+    public function services() {
+        return $this->belongsToMany(Service::class);
     }
 
 }

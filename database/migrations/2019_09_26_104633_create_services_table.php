@@ -24,8 +24,9 @@ class CreateServicesTable extends Migration
             $table->unsignedInteger('category_id')->nullable();
             $table->unsignedInteger('user_id')->nullable();
             $table->decimal('amount' , '9' , 2)->default(0);
-            $table->integer('status')->default(0);
+            $table->integer('status')->default(1);
             $table->integer('views')->default(0);
+            $table->string('file')->nullable();
             $table->foreign('category_id')
                 ->references('id')
                 ->on('categories')
@@ -34,7 +35,6 @@ class CreateServicesTable extends Migration
                 ->references('id')
                 ->on('users')
                 ->onDelete('cascade');
-            $table->dateTime('expired_at')->nullable();
             $table->timestamps();
 		});
 	}

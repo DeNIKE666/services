@@ -13,5 +13,6 @@ $factory->define(Service::class, function (Faker $faker) {
         'category_id' => random_int(11,20),
         'user_id' => \App\Models\User::all()->random()->id,
         'amount' => random_int(1000, 3000),
+        'file' => 'empty',
     ];
 });

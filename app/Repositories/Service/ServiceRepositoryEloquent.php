@@ -2,6 +2,8 @@
 
 namespace App\Repositories\Service;
 
+use Illuminate\Container\Container as Application;
+use Illuminate\Support\Facades\Storage;
 use Prettus\Repository\Eloquent\BaseRepository;
 use Prettus\Repository\Contracts\CacheableInterface;
 use Prettus\Repository\Traits\CacheableRepository;
@@ -10,9 +12,11 @@ use App\Models\Service\Service;
 class ServiceRepositoryEloquent extends BaseRepository implements  CacheableInterface
 {
 
-    protected $cacheMinutes = 90;
+    protected $cacheMinutes = 10;
 
     protected $cacheOnly = ['all'];
+
+    protected $service;
 
     use CacheableRepository;
 
@@ -31,14 +35,20 @@ class ServiceRepositoryEloquent extends BaseRepository implements  CacheableInte
         $this->pushCriteria(app('Prettus\Repository\Criteria\RequestCriteria'));
     }
 
-    public function deleteImage($image) {
-        \Storage::disk('public')->delete($image);
+    public function serviceFind(Service $service) {
+        $this->service = $service;
         return $this;
     }
 
-    public function deleteService($id)
+    public function dropFiles()
     {
-        return $this->delete($id);
+        Storage::disk('public')->delete([$this->service->image, $this->service->file]);
+        return $this;
+    }
+
+    public function deleteService()
+    {
+        return $this->delete($this->service->id);
     }
 
 }

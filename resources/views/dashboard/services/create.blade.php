@@ -54,7 +54,16 @@
                             </div>
 
                             <div class="col-xl-12">
-                                <button type="submit" class="button ripple-effect big"><i class="fal fa-plus"></i> Опубликовать</button>
+                                <div class="uploadButton margin-bottom-30">
+                                    <input class="uploadButton-input" type="file" name="file" id="upload">
+                                    <label class="uploadButton-button ripple-effect" for="upload">Загрузить</label>
+                                    <span class="uploadButton-file-name">прикрепите файл инструкций пользователю для ознакомлений </span>
+                                </div>
+                            </div>
+
+
+                            <div class="col-xl-12">
+                                <button type="submit" class="button ripple-effect big margin-bottom-20"><i class="fal fa-plus"></i> Опубликовать</button>
                             </div>
 
                         </div>

@@ -48,7 +48,7 @@ return [
         'enabled'   => true,
 
         //Lifetime of cache
-        'minutes'   => 10,
+        'minutes'   => 30,
 
         //Repository Cache, implementation Illuminate\Contracts\Cache\Repository
         'repository'=> 'cache',

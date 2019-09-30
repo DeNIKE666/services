@@ -1,7 +1,9 @@
 <?php
 
 Route::prefix('/')->namespace('Frontend')->group(function () {
+
     Route::get('/', 'FrontendController@index')->name('frontend.index');
+    Route::get('/info', 'FrontendController@info')->name('frontend.info');
 
     Route::prefix('category')->group(function () {
         Route::any('/{id?}', 'FrontendControllerCategories@show')->name('category.show');
