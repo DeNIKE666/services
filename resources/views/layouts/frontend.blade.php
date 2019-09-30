@@ -16,20 +16,17 @@
 
     <!-- Header Container / End -->
 
-
     <!-- BreadCrumbs -->
 
       @yield('breadcrumbs')
 
    <!-- BreadCrumbs / End -->
 
-
    <!-- Content / End -->
 
       @yield('content')
 
    <!-- Content / End -->
-
 
    <!-- Footer -->
 
@@ -42,6 +39,8 @@
 
 <!-- Scripts
 ================================================== -->
+
+@stack('scripts')
 
 <script src="{{ mix('assets/frontend/js/frontend.js') }}"></script>
 

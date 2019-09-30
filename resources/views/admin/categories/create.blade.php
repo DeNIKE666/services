@@ -11,15 +11,16 @@
                 <div class="card-title">Добавить категорию</div>
             </div>
             <div class="card-body">
-                <form action="{{ route('categories.store') }}" method="post">
+                <form action="{{ route('categories.store') }}" method="post" enctype="multipart/form-data">
                     <div class="form-group">
                         <label for="title">Название</label>
                         <input type="text" class="form-control" id="title" name="title">
                     </div>
 
-                    <div class="form-group">
-                        <label for="image">Изображение</label>
-                        <input type="text" class="form-control" id="image" name="i,age">
+                    <div class="input-file input-file-image">
+                        <img class="img-upload-preview img-circle" width="100" height="100" src="https://placehold.it/100x100" alt="preview">
+                        <input type="file" class="form-control form-control-file" id="uploadImg" name="uploadImg" accept="image/*" required="">
+                        <label for="uploadImg" class="btn btn-primary btn-round btn-lg"><i class="fa fa-file-image"></i> Upload a Image</label>
                     </div>
 
                     @include('admin.partials.categories.categories', ['option' => true])

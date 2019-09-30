@@ -20,13 +20,7 @@
                 <!-- Form -->
                 <form action="{{ route('register') }}" method="POST">
 
-                    @if (count($errors))
-
-                        @foreach ($errors->all() as $error)
-                            {{ $error }}
-                        @endforeach
-
-                    @endif
+                @include('__includes.frontend.alert')
 
                 <!-- Account Type -->
                     <div class="account-type">

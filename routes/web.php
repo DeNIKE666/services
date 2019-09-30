@@ -35,14 +35,18 @@ Route::prefix('dashboard')->namespace('Dashboard')->middleware('auth')->group(fu
 });
 
 Route::prefix('admin')->namespace('Admin')->group(function () {
+
     Route::get('/', 'AdminController@index')->name('admin.index');
+
     Route::prefix('categories')->group(function () {
         Route::get('/removeAll', 'CategoriesController@removeAll')->name('removeAll');
         Route::get('/up/{id}', 'CategoriesController@up')->name('up');
         Route::get('/down/{id}', 'CategoriesController@down')->name('down');
         Route::get('/remove/{id}', 'CategoriesController@remove')->name('remove');
     });
+
     Route::resource('categories', 'CategoriesController')->except('delete');
+
 });
 
 Auth::routes();

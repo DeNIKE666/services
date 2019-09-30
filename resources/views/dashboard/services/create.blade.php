@@ -39,7 +39,8 @@
                             <div class="col-xl-12">
                                 <div class="submit-field">
                                     <h5>Описание</h5>
-                                    <textarea cols="30" rows="5" name="body" class="with-border" placeholder="Опишите подробно услугу, которую хотите предложить..">{{ old('body') }}</textarea>
+                                    <textarea cols="30" maxlength="1000" rows="5" name="body" id="text" class="with-border" placeholder="Опишите подробно услугу, которую хотите предложить..">{{ old('body') }}</textarea>
+                                    <p id="char">Осталось 0 символов / из 1000</p>
                                 </div>
                             </div>
 
@@ -74,4 +75,22 @@
 
     </div>
     <!-- Row / End -->
+
+
+    @push('scripts')
+        <script>
+            var maxLength = 1000;
+
+            var input = $('#text').keyup(function () {
+
+                var textlen = maxLength - $(this).val().length;
+
+                textlen == 0 ?
+                    input.css('background', '#26284212')
+                    : input.css('background', 'none');
+
+                $('#char').text('Осталось ' + textlen + ' символов / из ' + maxLength);
+            });
+        </script>
+    @endpush
 @endsection

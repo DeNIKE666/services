@@ -58,7 +58,7 @@ class ServicesController extends Controller
             'title' => ['required' , 'string' , 'max:255' , 'max:70'],
             'category_id' => ['required'],
             'amount' => ['required' , 'integer'],
-            'body' => ['required' , 'string'  , 'max:1000'],
+            'body' => ['required' , 'string'  , 'min:150', 'max:1000'],
         ]);
 
         $imageUpload = $request->hasFile('image') ?
@@ -73,7 +73,7 @@ class ServicesController extends Controller
             'image' => $imageUpload,
             'category_id' => $request->input('category_id'),
             'user_id' => auth()->user()->id,
-            'amount' => $request->input('amount'),
+            'amount' => (int) $request->input('amount'),
             'file' => $FileUpload,
         ]);
 
@@ -107,7 +107,7 @@ class ServicesController extends Controller
             'title' => ['required' , 'string' , 'max:255' , 'max:70'],
             'category_id' => ['required'],
             'amount' => ['required' , 'string'],
-            'body' => ['required' , 'string'  , 'max:1000'],
+            'body' => ['required' , 'string'  , 'min:150', 'max:1000'],
         ]);
 
         if ($request->hasAny(['image' , 'file'])) {
@@ -122,7 +122,6 @@ class ServicesController extends Controller
             'body' => $request->input('body'),
             'image' => $image ?? $service->image,
             'category_id' => $request->input('category_id'),
-            'user_id' => auth()->user()->id,
             'amount' => (int) $request->input('amount'),
             'file' => $file ?? $service->file,
         ]);
