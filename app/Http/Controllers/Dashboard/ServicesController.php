@@ -8,6 +8,7 @@ use App\Models\Service\Service;
 use App\Repositories\Service\ServiceRepositoryEloquent;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use function MongoDB\BSON\toJSON;
 
 class ServicesController extends Controller
 {
@@ -110,20 +111,35 @@ class ServicesController extends Controller
             'body' => ['required' , 'string'  , 'min:150', 'max:1000'],
         ]);
 
-        if ($request->hasAny(['image' , 'file'])) {
-            if ($this->repository->serviceFind($service)->dropFiles()) {
-                $image = $request->file('image')->store('products', 'public');
-                $file = $request->file('file')->store('files', 'public');
-            }
+
+        $imageCurrent = $service->image;
+
+        $fileCurrent = $service->file;
+
+        if ($request->allFiles())
+        {
+            if ($request->hasFile('image')) :
+                if ($this->repository->prevDeleteFile($imageCurrent)) :
+                    $file = $request->file('image')->getClientOriginalName();
+                    $imageCurrent = $request->file('image')->storeAs('products', $file, 'public');
+                endif;
+            endif;
+
+            if ($request->hasFile('file')) :
+                if ($this->repository->prevDeleteFile($fileCurrent)) :
+                    $file = $request->file('file')->getClientOriginalName();
+                    $fileCurrent = $request->file('file')->storeAs('files',  $file ,'public');
+                endif;
+            endif;
         }
 
         $update = $service->update([
             'title' => $request->input('title'),
             'body' => $request->input('body'),
-            'image' => $image ?? $service->image,
+            'image' => $imageCurrent,
             'category_id' => $request->input('category_id'),
             'amount' => (int) $request->input('amount'),
-            'file' => $file ?? $service->file,
+            'file' => $fileCurrent,
         ]);
 
         return redirect()->route('service.index');
@@ -156,6 +172,19 @@ class ServicesController extends Controller
         });
 
         return redirect()->route('service.index');
+    }
+
+    public function removeFile($id) {
+
+        $service = $this->repository->pushCriteria(SelfServiceCriteria::class)->find($id);
+
+        if (\Storage::disk('public')->exists($service->file)) :
+            \Storage::disk('public')->delete($service->file);
+        endif;
+
+        if ($service->update(['file' => null,])) {
+            return response('ok');
+        }
     }
 
 }

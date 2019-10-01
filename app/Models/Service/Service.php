@@ -3,8 +3,6 @@
 namespace App\Models\Service;
 
 use App\Models\User;
-use Carbon\Carbon;
-use Carbon\CarbonImmutable;
 use Illuminate\Database\Eloquent\Model;
 use Prettus\Repository\Traits\TransformableTrait;
 use Prettus\Repository\Contracts\Transformable;
@@ -45,6 +43,11 @@ class Service extends Model implements Transformable
         return $this->image !== null ? 'storage/' . $this->image : asset('assets/frontend/img/no_image.png');
     }
 
+    /**
+     * @param $value
+     * @return string
+     */
+
     public function limitBody($value) {
         return str_limit($this->body , $value , "....");
     }
@@ -64,6 +67,10 @@ class Service extends Model implements Transformable
     public function categories() {
         return $this->hasOne('App\Models\Category' , 'id' , 'category_id');
     }
+
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
+     */
 
     public function services() {
         return $this->belongsToMany(Service::class);

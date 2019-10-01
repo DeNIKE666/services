@@ -26,6 +26,7 @@ Route::prefix('dashboard')->namespace('Dashboard')->middleware('auth')->group(fu
         Route::post('/update/{id}' , 'ServicesController@update')->name('service.update');
         Route::get('/delete/{id}' , 'ServicesController@delete')->name('service.delete');
         Route::get('/deletes', 'ServicesController@deletes')->name('service.deletes');
+        Route::get('/delete/file/{id}', 'ServicesController@removeFile')->name('service.remove.file');
     });
 
     Route::prefix('account')->group(function () {

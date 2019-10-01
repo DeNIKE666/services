@@ -75,22 +75,4 @@
 
     </div>
     <!-- Row / End -->
-
-
-    @push('scripts')
-        <script>
-            var maxLength = 1000;
-
-            var input = $('#text').keyup(function () {
-
-                var textlen = maxLength - $(this).val().length;
-
-                textlen == 0 ?
-                    input.css('background', '#26284212')
-                    : input.css('background', 'none');
-
-                $('#char').text('Осталось ' + textlen + ' символов / из ' + maxLength);
-            });
-        </script>
-    @endpush
 @endsection

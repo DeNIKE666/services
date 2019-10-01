@@ -39,7 +39,8 @@
                             <div class="col-xl-12">
                                 <div class="submit-field">
                                     <h5>Описание</h5>
-                                    <textarea cols="30" rows="5" name="body" class="with-border" placeholder="Опишите подробно услугу, которую хотите предложить..">{{ $service->body }}</textarea>
+                                    <textarea cols="30" maxlength="1000" rows="5" id="text" name="body" class="with-border" placeholder="Опишите подробно услугу, которую хотите предложить..">{{ $service->body }}</textarea>
+                                    <p id="char">Осталось 0 символов / из 1000</p>
                                 </div>
                             </div>
 
@@ -48,22 +49,25 @@
                                     <h5>Картинка</h5>
                                     <div class="avatar-wrapper">
                                         <img class="profile-pic" src="{{ asset($service->image()) }}" alt=""/><div class="upload-button"></div>
-                                        <input class="file-upload" type="file" name="image" accept="image/*"/>
+                                        <input class="file-upload" value="" type="file" name="image" accept="image/*"/>
                                     </div>
                                 </div>
                             </div>
 
                             <div class="col-xl-12">
                                 <div class="uploadButton margin-bottom-30">
-                                    <input class="uploadButton-input" value="342423" type="file" name="file" id="upload">
-                                    <label class="uploadButton-button ripple-effect" for="upload">Загрузить</label>
-                                    <span class="uploadButton-file-name">
+                                    <input class="uploadButton-input" type="file" name="file" id="upload">
+                                    <label class="uploadButton-button ripple-effect" for="upload" id="textButton">{{ $service->file == null ? 'Загрузить файл' : 'Обновить файл' }} </label>
+
+                                    <div id="blockFile" class="blockUpload">
                                         @if ($service->file())
-                                            <a href="{{ asset($service->file()) }}">прикреплённый файл</a>
-                                        @else
-                                            прикрепите файл инструкций пользователю для ознакомлений
+                                            <a href="{{ asset($service->file()) }}" class="uploadButton-button ripple-effect margin-left-10"><i class="fad fa-eye"></i></a>
+                                            <a id="deleteFile" href="#" class="uploadButton-button ripple-effect margin-left-10"><i class="fad fa-trash-alt"></i></a>
                                         @endif
-                                    </span>
+                                    </div>
+
+                                    <span class="uploadButton-file-name" id="labelBlockUpload"></span>
+
                                 </div>
                             </div>
 
@@ -77,7 +81,37 @@
                 </div>
             </div>
         </div>
-
     </div>
     <!-- Row / End -->
+
+    @push('scripts')
+        <script>
+
+            var textButton = $('#textButton');
+
+            var textBlockUpload = $('#labelBlockUpload');
+
+            $('#deleteFile').on('click', function () {
+                $.ajax({
+                    url: '{{ route('service.remove.file', $service->id) }}',
+                    context: document.body,
+                    success: function (context) {
+                        if (context == 'ok') {
+                            $('#blockFile').css('display', 'none');
+                            textButton.text('Загрузить файл');
+                            textBlockUpload.text('прикрепите файл инструкций пользователю для ознакомлений');
+                            Snackbar.show({
+                                text: context == 'ok' ? 'Файл был успешно удален' : 'Ошибка',
+                                pos: 'bottom-left',
+                                duration: 7000,
+                                textColor: '#d9fffc',
+                                backgroundColor: '#30ffa5'
+                            });
+                        }
+                    },
+                });
+            })
+
+        </script>
+    @endpush
 @endsection

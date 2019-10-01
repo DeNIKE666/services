@@ -18717,3 +18717,7 @@ a.headline-link:after {
 .padding-left-100 {
     padding-left: 100px !important
 }
+
+.blockUpload {
+    display: flex;
+}

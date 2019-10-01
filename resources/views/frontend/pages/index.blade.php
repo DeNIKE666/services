@@ -116,18 +116,16 @@
 
                                             <h2 class="job-listing-title">{{ $service->title }}</h2>
 
-                                            <p class="margin-bottom-10">{{ $service->limitBody(150) }}</p>
+                                            <p class="margin-bottom-10">{{ $service->limitBody(170) }}</p>
 
                                             <div class="job-listing-footer">
                                                 <ul>
                                                     <li><i class="fal fa-star"></i> рейтинг {{ $service->user->rating }}</li>
                                                     <li><i class="fal fa-business-time"></i> {{ $service->created_at->diffForHumans() }}</li>
+                                                    <li><i class="fad fa-eye"></i> {{ $service->views }}</li>
                                                 </ul>
                                             </div>
                                         </div>
-
-                                        <!-- Apply Button -->
-                                        <span class="list-apply-button ripple-effect"><i class="fal fa-shopping-cart"></i> Заказать</span>
                                     </div>
                                 </a>
 
