@@ -1,11 +1,8 @@
-<!-- Dashboard Sidebar
-        ================================================== -->
 <div class="dashboard-sidebar">
     <div class="dashboard-sidebar-inner" data-simplebar>
         <div class="dashboard-nav-container">
 
-            @if (auth()->user()->profile_type == 1)
-
+          @if (auth()->user()->profile_type == 1)
             <!-- Responsive Navigation Trigger -->
             <a href="#" class="dashboard-responsive-nav-trigger">
 					<span class="hamburger hamburger--collapse" >
@@ -56,8 +53,6 @@
                     </div>
                     <!-- Navigation / End -->
             @endif
-
         </div>
     </div>
 </div>
-<!-- Dashboard Sidebar / End -->

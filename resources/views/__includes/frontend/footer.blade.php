@@ -50,7 +50,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-xl-12">
-                    © 2019 <strong>Hireo</strong>. All Rights Reserved.
+                    © 2019 <strong>AUSell</strong>. All Rights Reserved.
                 </div>
             </div>
         </div>

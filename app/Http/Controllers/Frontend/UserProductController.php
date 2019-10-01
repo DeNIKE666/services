@@ -17,7 +17,9 @@ class UserProductController extends Controller
     {
         $service = $serviceRepositoryEloquent->find($productId);
 
-        auth()->user() ? auth()->user()->profile_ype == 0 : $service->increment('views', 1);
+        if (auth()->user() && auth()->user()->profile_type == 0) :
+            $service->increment('views', 1);
+        endif;
 
         return view('frontend.pages.show_sell')->with([
             'service' => $service,

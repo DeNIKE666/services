@@ -1,7 +1,4 @@
-<!-- Header Container
-    ================================================== -->
 <header id="header-container" class="fullwidth dashboard-header not-sticky">
-
     <!-- Header -->
     <div id="header">
         <div class="container">
@@ -69,4 +66,3 @@
     <!-- Header / End -->
 </header>
 <div class="clearfix"></div>
-<!-- Header Container / End -->

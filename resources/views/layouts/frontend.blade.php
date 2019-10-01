@@ -12,8 +12,6 @@
 
     @include('__includes.frontend.header.guest_header')
 
-    <div class="clearfix"></div>
-
     <!-- Header Container / End -->
 
     <!-- BreadCrumbs -->
@@ -39,10 +37,9 @@
 
 <!-- Scripts
 ================================================== -->
+<script src="{{ mix('assets/frontend/js/frontend.js') }}"></script>
 
 @stack('scripts')
-
-<script src="{{ mix('assets/frontend/js/frontend.js') }}"></script>
 
 </body>
 </html>

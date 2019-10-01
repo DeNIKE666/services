@@ -25,13 +25,13 @@
                 <!-- Account Type -->
                     <div class="account-type">
                         <div>
-                            <input type="radio" name="profile_type" value="0" id="freelancer-radio" class="account-type-radio"/>
-                            <label for="freelancer-radio" class="ripple-effect-dark"><i class="icon-material-outline-account-circle"></i> Покупатель </label>
+                            <input type="radio" name="profile_type" value="0" id="freelancer-radio" checked class="account-type-radio"/>
+                            <label for="freelancer-radio" class="ripple-effect-dark"><i class="fal fa-user-shield"></i> Покупатель </label>
                         </div>
 
                         <div>
                             <input type="radio" name="profile_type" value="1" id="employer-radio" class="account-type-radio"/>
-                            <label for="employer-radio" class="ripple-effect-dark"><i class="icon-material-outline-business-center"></i> Продавец</label>
+                            <label for="employer-radio" class="ripple-effect-dark"><i class="fal fa-business-time"></i> Продавец</label>
                         </div>
                     </div>
 
@@ -59,8 +59,6 @@
                         <i class="fal fa-lock"></i>
                         <input type="password" class="input-text with-border" name="password_confirmation" placeholder="Повторите пароль" autocomplete="new-password">
                     </div>
-
-                    <a href="#" class="forgot-password">Forgot Password?</a>
 
                     <button class="button full-width button-sliding-icon ripple-effect margin-top-10" type="submit">Создать аккаунт <i class="fal fa-long-arrow-right"></i> </button>
 

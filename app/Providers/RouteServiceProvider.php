@@ -2,6 +2,8 @@
 
 namespace App\Providers;
 
+use App\Models\Service\Service;
+use App\Repositories\Service\ServiceRepositoryEloquent;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Foundation\Support\Providers\RouteServiceProvider as ServiceProvider;

@@ -4557,9 +4557,10 @@ span.blog-item-tag {
 }
 
 .job-listing .job-listing-description p {
-    margin: 15px 0 0;
-    padding: 0;
-    color: #666
+    margin: 10px 30px 0px 0px;
+    /* padding: 17px; */
+    color: #68686f;
+    text-align: justify;
 }
 
 .job-listing h4.job-listing-company {
@@ -16430,7 +16431,8 @@ body.gray {
 
 body p {
     font-size: 16px;
-    line-height: 27px
+    line-height: 27px;
+    word-break: break-word;
 }
 
 body, h1, h2, h3, h4, h5, h6, input[type=text], input[type=password], input[type=email], textarea, select, input[type=button], input[type=submit], button, body .pac-container {

@@ -8,6 +8,9 @@
 
     <!-- CSS
     ================================================== -->
+
     <link rel="stylesheet" href="{{ mix('assets/frontend/css/frontend.css') }}">
+
+    @stack('styles')
 
 </head>

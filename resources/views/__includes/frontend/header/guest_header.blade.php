@@ -20,6 +20,7 @@
                         <li><a href="/"><i class="fal fa-user-headset"></i> Информация</a></li>
                     </ul>
                 </nav>
+
                 <div class="clearfix"></div>
                 <!-- Main Navigation / End -->
 
@@ -39,3 +40,5 @@
     </div>
     <!-- Header / End -->
 </header>
+
+<div class="clearfix"></div>
