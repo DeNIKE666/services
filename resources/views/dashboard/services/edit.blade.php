@@ -23,15 +23,14 @@
                             <div class="col-xl-4">
                                 <div class="submit-field">
                                     <h5>Стоимость</h5>
-                                    <input type="text" class="with-border" name="amount" placeholder="стоимость услуги"
-                                           value="{{ $service->amount }}">
+                                    <input type="text" class="with-border" name="amount" placeholder="стоимость услуги" value="{{ $service->amount }}">
                                 </div>
                             </div>
                             <div class="col-xl-12">
                                 <div class="submit-field">
                                     <h5>Описание</h5>
                                     <textarea cols="30" maxlength="1000" rows="5" id="text" name="body" class="with-border" placeholder="Опишите подробно услугу, которую хотите предложить..">{{ $service->body }}</textarea>
-                                    <p id="char">Доступно 0 символов / из 2000</p>
+                                    <p id="char"></p>
                                 </div>
                             </div>
                             <div class="col-xl-12">
@@ -50,9 +49,8 @@
                                     <label class="uploadButton-button ripple-effect" for="upload" id="textButton">{{ $service->file == null ? 'Загрузить файл' : 'Обновить файл' }} </label>
                                     <div id="blockFile" class="blockUpload">
                                         @if ($service->file())
-                                            <a href="{{ asset($service->file()) }}"
-                                               class="uploadButton-button ripple-effect margin-left-10"><i class="fad fa-eye"></i></a>
-                                            <a id="deleteFile" href="#" class="uploadButton-button ripple-effect margin-left-10"><i class="fad fa-trash-alt"></i></a>
+                                            <a href="{{ asset($service->file()) }}" class="uploadButton-button ripple-effect margin-left-10"><i class="fad fa-eye"></i></a>
+                                            <a id="deleteFile" href="JavaScript:void(0);" onclick="deleteFile()" class="uploadButton-button ripple-effect margin-left-10"><i class="fad fa-trash-alt"></i></a>
                                         @endif
                                     </div>
                                     <span class="uploadButton-file-name" id="labelBlockUpload"></span>
@@ -71,6 +69,30 @@
     </div>
     <!-- Row / End -->
     @push('scripts')
-        //
+        <script>
+
+            var label = $('#labelBlockUpload');
+
+            function deleteFile() {
+                $.post({
+                    url: '{{ route('service.remove.file', $service) }}',
+                    success: function (result) {
+                        if (result == 'ok') {
+                            $('#blockFile').css('display', 'none');
+                            $('#textButton').text('Загрузить файл');
+                            label.text('файл инструкций для ознакомления');
+
+                            swal.fire({
+                                type: 'success',
+                                title: 'Файл удалён'
+                            });
+
+                        }
+
+
+                    },
+                });
+            }
+        </script>
     @endpush
 @endsection

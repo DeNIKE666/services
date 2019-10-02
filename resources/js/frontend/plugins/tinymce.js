@@ -10,14 +10,14 @@ tinyMCE.init({
     selector: "textarea",
     language: 'ru',
     height: 250,
-    menubar:false,
+    menubar: false,
     statusbar: false,
-    plugins: ['lists' , 'emoticons' , 'media'],
+    plugins: ['lists', 'emoticons', 'media'],
     charwordcount_include_tags: false,
     spellchecker_language: 'ru',
     toolbar: 'paste undo redo | bold italic underline| numlist bullist | emoticons | media',
-    setup: function(e){
-        e.on('keyUp', function(e){
+    setup: function (e) {
+        e.on('keyUp', function (e) {
             var len = tinymce.activeEditor.getContent().length;
             var editor = tinymce.activeEditor.contentDocument.body;
             var html = $('#char').text('Введено символов ' + len + ' из 2000');
