@@ -81,15 +81,11 @@
                             $('#blockFile').css('display', 'none');
                             $('#textButton').text('Загрузить файл');
                             label.text('файл инструкций для ознакомления');
-
-                            swal.fire({
+                            Toast.fire({
                                 type: 'success',
-                                title: 'Файл удалён'
-                            });
-
+                                title: 'Файл успешно удалён'
+                            })
                         }
-
-
                     },
                 });
             }

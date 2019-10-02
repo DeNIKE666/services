@@ -1,10 +1,12 @@
-import swal from 'sweetalert2';
+import Swal from 'sweetalert2/dist/sweetalert2.js'
+import 'sweetalert2/src/sweetalert2.scss'
 
-window.swal = swal
+window.Swal = Swal;
 
-const Toast = swal.mixin({
+window.Toast = Swal.mixin({
     toast: true,
-    position: 'bottom',
+    padding: '1.5rem',
+    position: 'center',
     showConfirmButton: false,
-    timer: 3000
+    timer: 30000
 });
