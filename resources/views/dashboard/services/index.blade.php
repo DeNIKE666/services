@@ -36,7 +36,6 @@
                                         <!-- Details -->
                                         <div class="job-listing-description">
                                             <h3 class="job-listing-title"><a href="#">{{ $service->title }}</a> <span class="dashboard-status-button yellow">{{ $service->categories->parent->title }}</span></h3>
-                                            <p>{{ $service->limitBody(200) }}</p>
                                             <!-- Job Listing Footer -->
                                             <div class="job-listing-footer">
                                                 <ul>
@@ -54,6 +53,7 @@
                                 <div class="buttons-to-right always-visible">
                                     <a href="{{ route('service.edit', $service->id) }}" class="button gray ripple-effect ico"><i class="fal fa-edit"></i></a>
                                     <a href="{{ route('service.delete', $service->id) }}" class="button gray ripple-effect ico"><i class="fal fa-trash-alt"></i></a>
+                                    <a href="{{ route('user.sell', $service->id) }}" class="button gray ripple-effect ico"><i class="fad fa-eye"></i></a>
                                 </div>
                             </li>
                         @empty

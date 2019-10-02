@@ -27,7 +27,6 @@ mix.scripts([
     'resources/js/frontend/magnific-popup.min.js',
     'resources/js/frontend/slick.min.js',
     'resources/js/frontend/custom.js',
-    'resources/js/frontend/dashboard.js',
 ], 'public/assets/frontend/js/frontend.js').version();
 
 mix.scripts([
