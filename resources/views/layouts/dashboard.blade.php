@@ -66,6 +66,7 @@
 <!-- Wrapper / End -->
 
     <script src="{{ mix('assets/frontend/js/frontend.js') }}"></script>
+    <script src="{{ mix('assets/frontend/js/plugins.js') }}"></script>
 
     @stack('scripts')
 

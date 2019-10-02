@@ -83,35 +83,4 @@
         </div>
     </div>
     <!-- Row / End -->
-
-    @push('scripts')
-        <script>
-
-            var textButton = $('#textButton');
-
-            var textBlockUpload = $('#labelBlockUpload');
-
-            $('#deleteFile').on('click', function () {
-                $.ajax({
-                    url: '{{ route('service.remove.file', $service->id) }}',
-                    context: document.body,
-                    success: function (context) {
-                        if (context == 'ok') {
-                            $('#blockFile').css('display', 'none');
-                            textButton.text('Загрузить файл');
-                            textBlockUpload.text('прикрепите файл инструкций пользователю для ознакомлений');
-                            Snackbar.show({
-                                text: context == 'ok' ? 'Файл был успешно удален' : 'Ошибка',
-                                pos: 'bottom-left',
-                                duration: 7000,
-                                textColor: '#d9fffc',
-                                backgroundColor: '#30ffa5'
-                            });
-                        }
-                    },
-                });
-            })
-
-        </script>
-    @endpush
 @endsection

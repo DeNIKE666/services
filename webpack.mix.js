@@ -1,19 +1,5 @@
 const mix = require('laravel-mix');
 
-/*
- |--------------------------------------------------------------------------
- | Mix Asset Management
- |--------------------------------------------------------------------------
- |
- | Mix provides a clean, fluent API for defining some Webpack build steps
- | for your Laravel application. By default, we are compiling the Sass
- | file for the application as well as bundling up all the JS files.
- |
- */
-
-//mix.js('resources/js/app.js', 'public/js'
-  //  .sass('resources/sass/app.scss', 'public/css';
-
 mix.styles([
     'resources/css/atlantis/bootstrap.min.css',
     'resources/css/atlantis/atlantis.css',
@@ -43,7 +29,6 @@ mix.scripts([
     'resources/js/frontend/custom.js',
     'resources/js/frontend/dashboard.js',
 ], 'public/assets/frontend/js/frontend.js').version();
-
 
 mix.scripts([
     'resources/js/atlantis/core/jquery.3.2.1.min.js',
@@ -84,3 +69,6 @@ mix.copy('resources/assets/atlantis/img', 'public/assets/atlantis/img')
 
 mix.copy('resources/assets/frontend/webfonts', 'public/assets/frontend/webfonts')
 mix.copy('resources/assets/frontend/img', 'public/assets/frontend/img')
+mix.copy('resources/assets/frontend/plugins' , 'public/assets/frontend/js')
+
+mix.js('resources/js/frontend/plugins.js', 'public/assets/frontend/js/plugins.js');

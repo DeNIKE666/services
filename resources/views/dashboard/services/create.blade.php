@@ -39,10 +39,12 @@
                             <div class="col-xl-12">
                                 <div class="submit-field">
                                     <h5>Описание</h5>
-                                    <textarea cols="30" maxlength="1000" rows="5" name="body" id="text" class="with-border" placeholder="Опишите подробно услугу, которую хотите предложить..">{{ old('body') }}</textarea>
-                                    <p id="char">Осталось 0 символов / из 1000</p>
+                                    <textarea cols="30"  maxlength="1000" rows="5" name="body" id="txtTinyMCE" class="with-border" placeholder="Опишите подробно услугу, которую хотите предложить..">{{ old('body') }}</textarea>
+                                    <p id="character_count">Осталось 0 символов / из 1000</p>
                                 </div>
                             </div>
+
+
 
                             <div class="col-xl-12">
                                 <div class="submit-field">
@@ -75,4 +77,19 @@
 
     </div>
     <!-- Row / End -->
+    @push('scripts')
+
+        <script src="{{ asset('node_modules/tinymce/tinymce.min.js') }}"></script>
+
+        <script>
+            tinymce.init({
+                selector: "textarea",
+                contextmenu: "link image imagetools table spellchecker",
+                formats: {
+                    // Changes the default format for h1 to have a class of heading
+                    p: { block: 'p', classes: 'margin-bottom-10' }
+                },
+            });
+        </script>
+    @endpush
 @endsection

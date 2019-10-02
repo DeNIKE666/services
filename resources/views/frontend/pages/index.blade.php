@@ -109,7 +109,7 @@
 
                                         <h2 class="job-listing-title">{{ $service->title }}</h2>
 
-                                        <p class="margin-bottom-10">{{ $service->limitBody(150) }}</p>
+                                        <p class="margin-bottom-10">{{ html_entity_decode(strip_tags($service->limitBody(150))) }}</p>
 
                                         <div class="job-listing-footer">
                                             <ul>
