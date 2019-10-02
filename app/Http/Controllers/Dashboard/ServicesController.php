@@ -59,7 +59,7 @@ class ServicesController extends Controller
             'title' => ['required' , 'string' , 'max:255' , 'max:70'],
             'category_id' => ['required'],
             'amount' => ['required' , 'integer'],
-            'body' => ['required' , 'string'  , 'min:150', 'max:1000'],
+            'body' => ['required' , 'string'  , 'max:2000'],
         ]);
 
         $imageUpload = $request->hasFile('image') ?
@@ -108,7 +108,7 @@ class ServicesController extends Controller
             'title' => ['required' , 'string' , 'max:255' , 'max:70'],
             'category_id' => ['required'],
             'amount' => ['required' , 'string'],
-            'body' => ['required' , 'string'  , 'min:150', 'max:1000'],
+            'body' => ['required' , 'string'  , 'max:2000'],
         ]);
 
 
