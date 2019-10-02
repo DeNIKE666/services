@@ -4,13 +4,15 @@ import tinymce from 'tinymce/tinymce';
 // A theme is also required
 import 'tinymce/themes/silver';
 
-// Any plugins you want to use has to be imported
-import 'tinymce/plugins/paste';
-import 'tinymce/plugins/link';
-
-tinyMCE.baseURL = "/assets/frontend/js/tinymce";// trailing slash important
+tinyMCE.baseURL = "/assets/frontend/js/plugins/tinymce";// trailing slash important
 
 tinymce.init({
     selector: "textarea",
-    contextmenu: "link image imagetools table spellchecker",
+    language: 'ru',
+    height: 250,
+    menubar:false,
+    statusbar: false,
+    plugins: ['link' , 'lists' , 'autosave' , 'emoticons' , 'media'],
+    spellchecker_language: 'ru',
+    toolbar: 'link paste undo redo | bold italic underline| numlist bullist | restoredraft | emoticons | media',
 });

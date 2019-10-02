@@ -69,6 +69,6 @@ mix.copy('resources/assets/atlantis/img', 'public/assets/atlantis/img')
 
 mix.copy('resources/assets/frontend/webfonts', 'public/assets/frontend/webfonts')
 mix.copy('resources/assets/frontend/img', 'public/assets/frontend/img')
-mix.copy('resources/assets/frontend/plugins' , 'public/assets/frontend/js')
+mix.copy('resources/assets/frontend/plugins' , 'public/assets/frontend/js/plugins')
 
 mix.js('resources/js/frontend/plugins.js', 'public/assets/frontend/js/plugins.js');
