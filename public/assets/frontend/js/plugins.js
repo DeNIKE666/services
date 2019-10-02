@@ -57993,12 +57993,11 @@ tinyMCE.init({
   language: 'ru',
   height: 250,
   menubar: false,
-  statusbar: true,
+  statusbar: false,
   plugins: ['lists', 'emoticons', 'media'],
   charwordcount_include_tags: false,
   spellchecker_language: 'ru',
   toolbar: 'paste undo redo | bold italic underline| numlist bullist | emoticons | media',
-  max: 10,
   setup: function setup(e) {
     e.on('keyUp', function (e) {
       var len = tinymce_tinymce__WEBPACK_IMPORTED_MODULE_0___default.a.activeEditor.getContent().length;
@@ -58011,14 +58010,6 @@ tinyMCE.init({
     });
   }
 });
-
-function body() {
-  tinymce_tinymce__WEBPACK_IMPORTED_MODULE_0___default.a.activeEditor.on('change', function () {
-    if (this.tinymce().getContent().length == 1) {
-      this.contentDocument.body.style.backgroundColor = "rgba(212, 212, 212, 0.42)";
-    }
-  });
-}
 
 /***/ }),
 
