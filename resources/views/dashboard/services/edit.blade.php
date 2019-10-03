@@ -11,28 +11,28 @@
                 <div class="content with-padding padding-bottom-10">
                     <form action="{{ route('service.update', $service) }}" method="post" enctype="multipart/form-data">
                         <div class="row">
-                            <div class="col-xl-4">
+                            <div class="col-xl-12">
                                 <div class="submit-field">
                                     <h5>Название</h5>
                                     <input type="text" class="with-border" name="title" placeholder="Название вашей услуги" value="{{ $service->title }}">
                                 </div>
                             </div>
-                            <div class="col-xl-4">
-                                @include('__includes.dashboard.categories.option')
-                            </div>
-                            <div class="col-xl-4">
-                                <div class="submit-field">
-                                    <h5>Стоимость</h5>
-                                    <input type="text" class="with-border" name="amount" placeholder="стоимость услуги" value="{{ $service->amount }}">
-                                </div>
-                            </div>
+
                             <div class="col-xl-12">
                                 <div class="submit-field">
-                                    <h5>Описание</h5>
+                                    <h5>Краткое описание (не более 100 символов)</h5>
+                                    <input type="text" class="with-border" name="short" value="{{ $service->short }}">
+                                </div>
+                            </div>
+
+                            <div class="col-xl-12">
+                                <div class="submit-field">
+                                    <h5>Полное описание услуги</h5>
                                     <textarea cols="30" maxlength="1000" rows="5" id="text" name="body" class="with-border" placeholder="Опишите подробно услугу, которую хотите предложить..">{{ $service->body }}</textarea>
                                     <p id="char"></p>
                                 </div>
                             </div>
+
                             <div class="col-xl-12">
                                 <div class="submit-field">
                                     <h5>Картинка</h5>
@@ -56,6 +56,18 @@
                                     <span class="uploadButton-file-name" id="labelBlockUpload"></span>
                                 </div>
                             </div>
+
+                            <div class="col-xl-6">
+                                @include('__includes.dashboard.categories.option')
+                            </div>
+
+                            <div class="col-xl-6">
+                                <div class="submit-field">
+                                    <h5>Стоимость</h5>
+                                    <input type="text" class="with-border" name="amount" placeholder="стоимость услуги" value="{{ $service->amount }}">
+                                </div>
+                            </div>
+
                             <div class="col-xl-12 margin-bottom-20">
                                 <button type="submit" class="button ripple-effect big"><i class="fal fa-edit"></i>
                                     Обновить данные

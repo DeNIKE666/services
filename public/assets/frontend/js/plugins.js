@@ -61588,10 +61588,10 @@ tinyMCE.init({
   height: 250,
   menubar: false,
   statusbar: false,
-  plugins: ['lists', 'emoticons', 'media'],
+  plugins: ['lists', 'emoticons'],
   charwordcount_include_tags: false,
   spellchecker_language: 'ru',
-  toolbar: 'paste undo redo | bold italic underline| numlist bullist | emoticons | media',
+  toolbar: 'paste undo redo | bold italic underline| numlist bullist | emoticons',
   forced_root_block: '',
   // forced_root_block_attrs: { "class": "margin-bottom-10 p-seller"},
   setup: function setup(e) {

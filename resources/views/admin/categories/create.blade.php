@@ -17,12 +17,6 @@
                         <input type="text" class="form-control" id="title" name="title">
                     </div>
 
-                    <div class="input-file input-file-image">
-                        <img class="img-upload-preview img-circle" width="100" height="100" src="https://placehold.it/100x100" alt="preview">
-                        <input type="file" class="form-control form-control-file" id="uploadImg" name="uploadImg" accept="image/*" required="">
-                        <label for="uploadImg" class="btn btn-primary btn-round btn-lg"><i class="fa fa-file-image"></i> Upload a Image</label>
-                    </div>
-
                     @include('admin.partials.categories.categories', ['option' => true])
 
                     <div class="form-group">

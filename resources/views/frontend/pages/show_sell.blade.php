@@ -34,52 +34,10 @@
 
         <div class="row">
             <div class="col-xl-8 col-lg-8 content-right-offset">
-
                 <div class="single-page-section">
                     <h3 class="margin-bottom-25">Описание услуги</h3>
                     <p class="margin-bottom-10 p_seller">{!! $service->body !!}</p>
                 </div>
-
-                @if (count($other))
-
-                <div class="single-page-section">
-                    <h3 class="margin-bottom-25">Другие услуги этого продавца</h3>
-
-                    <!-- Listings Container -->
-                    <div class="listings-container grid-layout">
-
-                        @foreach ($other as $otherItem)
-                            @if ($otherItem->id !== $service->id)
-                            <!-- Job Listing -->
-                                <a href="{{ route('user.sell', $otherItem) }}" class="job-listing">
-
-                                    <!-- Job Listing Details -->
-                                    <div class="job-listing-details">
-                                        <!-- Details -->
-                                        <div class="job-listing-description">
-                                            <h4 class="job-listing-company">{{ $otherItem->categories->parent->title }}</h4>
-                                            <h3 class="job-listing-title">{{ $otherItem->title }}</h3>
-
-                                            <p>{{ $service->limitBody(70) }}</p>
-                                        </div>
-                                    </div>
-
-                                    <!-- Job Listing Footer -->
-                                    <div class="job-listing-footer">
-                                        <ul>
-                                            <li><i class="fad fa-link"></i> перейти</li>
-                                        </ul>
-                                    </div>
-                                </a>
-
-                                @endif
-
-                        @endforeach
-
-                    </div>
-                    <!-- Listings Container / End -->
-                </div>
-               @endif
             </div>
 
             <!-- Sidebar -->

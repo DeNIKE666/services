@@ -4613,7 +4613,10 @@ span.blog-item-tag {
     }
 
     .job-listing .job-listing-title {
-        padding-right: 10%
+        padding-right: 10%;
+        word-break: break-word;
+        font-size: 13px;
+        font-weight: 600;
     }
 }
 

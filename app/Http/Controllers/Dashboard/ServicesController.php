@@ -6,6 +6,7 @@ use App\Criteria\SelfServiceCriteria;
 use App\Models\Category;
 use App\Models\Service\Service;
 use App\Repositories\Service\ServiceRepositoryEloquent;
+use Illuminate\Http\FileHelpers;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use function MongoDB\BSON\toJSON;
@@ -56,26 +57,37 @@ class ServicesController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'title' => ['required' , 'string' , 'max:255' , 'max:70'],
+            'title' => ['required' , 'string'  , 'max:70'],
+            'short' => ['required' , 'string' , 'max:100'],
             'category_id' => ['required'],
             'amount' => ['required' , 'integer'],
             'body' => ['required' , 'string'  , 'max:2000'],
         ]);
 
-        $imageUpload = $request->hasFile('image') ?
-                       $request->file('image')->store('products' , 'public') : null;
+        $image = null;
+        $file = null;
 
-        $FileUpload = $request->hasFile('file') ?
-            $request->file('file')->store('files' , 'public') : null;
+        if ($request->hasFile('image')) {
+            $file = $request->file('image');
+            $fileName =  'image_' .uniqid() . '_' . $file->getClientOriginalName();
+            $image =  $request->file('image')->storeAs('services', $fileName, 'public');
+        }
+
+        if ($request->hasFile('file')) {
+            $file = $request->file('file');
+            $fileName =  'file_' .uniqid() . '_' . $file->getClientOriginalName();
+            $file =  $request->file('file')->storeAs('files', $fileName, 'public');
+        }
 
         Service::create([
             'title' => $request->input('title'),
+            'short' => $request->input('short'),
             'body' => $request->input('body'),
-            'image' => $imageUpload,
+            'image' => $image,
             'category_id' => $request->input('category_id'),
             'user_id' => auth()->user()->id,
             'amount' => (int) $request->input('amount'),
-            'file' => $FileUpload,
+            'file' => $file,
         ]);
 
         return redirect()->route('service.index');
@@ -105,36 +117,34 @@ class ServicesController extends Controller
         $service = $this->repository->pushCriteria(SelfServiceCriteria::class)->find($id);
 
         $request->validate([
-            'title' => ['required' , 'string' , 'max:255' , 'max:70'],
+            'title' => ['required' , 'string' , 'max:70'],
+            'short' => ['required' , 'string' , 'max:100'],
             'category_id' => ['required'],
             'amount' => ['required' , 'string'],
             'body' => ['required' , 'string'  , 'max:2000'],
         ]);
 
-
         $imageCurrent = $service->image;
 
         $fileCurrent = $service->file;
 
-        if ($request->allFiles())
-        {
-            if ($request->hasFile('image')) :
-                if ($this->repository->prevDeleteFile($imageCurrent)) :
-                    $file = $request->file('image')->getClientOriginalName();
-                    $imageCurrent = $request->file('image')->storeAs('products', $file, 'public');
-                endif;
-            endif;
+        if ($request->hasFile('image')) {
+            $this->repository->prevDeleteFile($imageCurrent);
+            $file = $request->file('image');
+            $fileName =  'image_' .uniqid() . '_' . $file->getClientOriginalName();
+            $imageCurrent =  $request->file('image')->storeAs('services', $fileName, 'public');
+        }
 
-            if ($request->hasFile('file')) :
-                if ($this->repository->prevDeleteFile($fileCurrent)) :
-                    $file = $request->file('file')->getClientOriginalName();
-                    $fileCurrent = $request->file('file')->storeAs('files',  $file ,'public');
-                endif;
-            endif;
+        if ($request->hasFile('file')) {
+            $this->repository->prevDeleteFile($fileCurrent);
+            $file = $request->file('file');
+            $fileName =  'file_' .uniqid() . '_' . $file->getClientOriginalName();
+            $fileCurrent =  $request->file('file')->storeAs('files', $fileName, 'public');
         }
 
         $update = $service->update([
             'title' => $request->input('title'),
+            'short' => $request->input('short'),
             'body' => $request->input('body'),
             'image' => $imageCurrent,
             'category_id' => $request->input('category_id'),

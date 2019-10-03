@@ -13,28 +13,28 @@
                 <div class="content with-padding padding-bottom-10">
                     <form action="{{ route('service.store') }}" method="post" enctype="multipart/form-data">
                         <div class="row">
-                            <div class="col-xl-4">
+                            <div class="col-xl-12">
                                 <div class="submit-field">
                                     <h5>Название</h5>
                                     <input type="text" class="with-border" name="title" placeholder="Название вашей услуги" value="{{ old('title') }}">
                                 </div>
                             </div>
-                            <div class="col-xl-4">
-                                @include('__includes.dashboard.categories.option')
-                            </div>
-                            <div class="col-xl-4">
-                                <div class="submit-field">
-                                    <h5>Стоимость</h5>
-                                    <input type="text" class="with-border" name="amount" placeholder="стоимость услуги" value="{{ old('amount') }}">
-                                </div>
-                            </div>
+
                             <div class="col-xl-12">
                                 <div class="submit-field">
-                                    <h5>Описание</h5>
+                                    <h5>Краткое описание (не более 100 символов)</h5>
+                                    <input type="text" class="with-border" name="short" placeholder="Введите текст" value="{{ old('short') }}">
+                                </div>
+                            </div>
+
+                            <div class="col-xl-12">
+                                <div class="submit-field">
+                                    <h5>Полное описание услуги</h5>
                                     <textarea cols="30"  maxlength="2000" rows="5" name="body" id="txtTinyMCE" class="with-border" placeholder="Опишите подробно услугу, которую хотите предложить..">{{ old('body') }}</textarea>
                                     <p id="char"></p>
                                 </div>
                             </div>
+
                             <div class="col-xl-12">
                                 <div class="submit-field">
                                     <h5>Картинка</h5>
@@ -51,6 +51,17 @@
                                     <span class="uploadButton-file-name">прикрепите файл инструкций пользователю для ознакомлений </span>
                                 </div>
                             </div>
+
+                            <div class="col-xl-6">
+                                @include('__includes.dashboard.categories.option')
+                            </div>
+                            <div class="col-xl-6">
+                                <div class="submit-field">
+                                    <h5>Стоимость</h5>
+                                    <input type="text" class="with-border" name="amount" placeholder="стоимость услуги" value="{{ old('amount') }}">
+                                </div>
+                            </div>
+
                             <div class="col-xl-12">
                                 <button type="submit" class="button ripple-effect big margin-bottom-20"><i class="fal fa-plus"></i> Опубликовать</button>
                             </div>

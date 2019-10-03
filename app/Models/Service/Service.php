@@ -18,6 +18,7 @@ class Service extends Model implements Transformable
 
     protected $fillable = [
         'title',
+        'short',
         'body',
         'image',
         'amount',
@@ -41,6 +42,15 @@ class Service extends Model implements Transformable
 
     public function image() {
         return $this->image !== null ? 'storage/' . $this->image : asset('assets/frontend/img/no_image.png');
+    }
+
+    /**
+     * @param $value
+     * @return string
+     */
+
+    public function limitShort($value) {
+        return str_limit($this->short , $value , "....");
     }
 
     /**
