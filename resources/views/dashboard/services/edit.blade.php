@@ -50,7 +50,7 @@
                                     <div id="blockFile" class="blockUpload">
                                         @if ($service->file())
                                             <a href="{{ asset($service->file()) }}" class="uploadButton-button ripple-effect margin-left-10"><i class="fad fa-eye"></i></a>
-                                            <a id="deleteFile" href="JavaScript:void(0);" onclick="deleteFile()" class="uploadButton-button ripple-effect margin-left-10"><i class="fad fa-trash-alt"></i></a>
+                                            <a id="deleteFile" value="remove" href="JavaScript:void(0);" onclick="deleteFile()" class="uploadButton-button ripple-effect margin-left-10"><i class="fad fa-trash-alt"></i></a>
                                         @endif
                                     </div>
                                     <span class="uploadButton-file-name" id="labelBlockUpload"></span>

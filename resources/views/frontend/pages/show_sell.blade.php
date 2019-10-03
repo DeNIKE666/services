@@ -37,7 +37,7 @@
 
                 <div class="single-page-section">
                     <h3 class="margin-bottom-25">Описание услуги</h3>
-                    {!! $service->body !!}
+                    <p class="margin-bottom-10 p_seller">{!! $service->body !!}</p>
                 </div>
 
                 @if (count($other))

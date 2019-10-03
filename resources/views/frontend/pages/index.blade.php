@@ -66,6 +66,8 @@
                        data-background-image="{{ $categoryItem->image }}">
                         <div class="photo-box-content">
                             <h3>{{ $categoryItem->title }}</h3>
+
+                            <span>{{ $categoryItem->countParent($categoryItem->id) }}</span>
                         </div>
                     </a>
                 </div>

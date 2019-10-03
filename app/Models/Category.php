@@ -22,6 +22,14 @@ class Category extends Model
      * @param $value
      */
 
+    public function countParent($id)
+    {
+        return \DB::table('categories')
+            ->join('services', 'category_id', '=', 'categories.id')
+            ->whereIn('category_id' , [$this->descendantsOf($id)->pluck('id')])
+            ->count();
+    }
+
     public function setTitleAttribute($value)
     {
         $this->attributes['title'] = $value;

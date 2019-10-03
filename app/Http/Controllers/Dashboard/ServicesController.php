@@ -174,22 +174,21 @@ class ServicesController extends Controller
         return redirect()->route('service.index');
     }
 
-    public function removeFile($id){
+    /**
+     * @param $id
+     * @return mixed
+     * @throws \Prettus\Repository\Exceptions\RepositoryException
+     */
 
+    public function removeFile($id)
+    {
         $service = $this->repository->pushCriteria(SelfServiceCriteria::class)->find($id);
-
-        if ($service->file == null) {
-            return "error";
-        }
 
         if (\Storage::disk('public')->exists($service->file)) :
             \Storage::disk('public')->delete($service->file);
         endif;
 
-        if ($service->update(['file' => null,])) {
-            return 'ok';
-        }
-
+       return $service->update(['file' => null,]);
     }
 
 }
