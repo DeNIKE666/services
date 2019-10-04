@@ -3,27 +3,18 @@
 @section('title' , 'Главная страница')
 
 @section('content')
-<div class="intro-banner" data-background-image="{{ asset('assets/frontend/img/home-background.jpg') }}">
+<div class="intro-banner" data-background-image="https://image.freepik.com/free-vector/banner-background-with-low-poly_1048-10730.jpg">
     <div class="container">
 
         <!-- Intro Headline -->
         <div class="row">
             <div class="col-md-12">
                 <div class="banner-headline">
-                    <h3>
-                        <strong>АвторSell</strong>
-                        <br>
-                        <span>Если вы обладаете каким либо<strong class="color"> творчеством </strong> у вас есть уникальная возможность продавать на площадке свои услуги другим пользователям</span>
-                        <p class="margin-top-30">Услуги которые вы сможете продать:
-                            <mark class="color">Написание авторских текстов</mark>
-                            ,
-                            <mark class="color">Мастеринг треков</mark>
-                            ,
-                            <mark class="color">Авторские биты / минуса</mark>
-                            ,
-                            <mark class="color">Создание ремиксов</mark>
-                        </p>
-                    </h3>
+
+                    <p class="p_text"><i class="fad fa-check"></i> лучшее решение проявить себя</p>
+                    <br>
+
+                   <p class="p_text_">Площадка создана для людей которые занимаються <strong class="color">творчеством</strong> и хотят на этом заработать, продавая своё творчество другим пользователям</p>
                 </div>
             </div>
         </div>
@@ -32,6 +23,12 @@
         <div class="row">
             <div class="col-md-12">
                 <ul class="intro-stats margin-top-45 hide-under-992px">
+
+                    <li>
+                        <strong class="counter">{{ $users->count()  }}</strong>
+                        <span>Пользователей</span>
+                    </li>
+
                     <li>
                         <strong class="counter">{{ $servicesCount }}</strong>
                         <span>Всего услуг</span>

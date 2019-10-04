@@ -18736,4 +18736,14 @@ a.headline-link:after {
     line-height: 40px;
 }
 
-.file-
+.p_text {
+    color: #8a8e92;
+    font-size: 23px;
+    text-transform: uppercase;
+}
+
+.p_text_ {
+    color: #595b73;
+    font-size: 20px;
+    line-height: 45px;
+}

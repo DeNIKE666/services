@@ -7,6 +7,7 @@ use App\Criteria\ServicesFrontendLastCriteria;
 use App\Models\Category;
 use App\Models\Services;
 
+use App\Models\User;
 use App\Repositories\Service\ServiceRepositoryEloquent as Repository;
 
 use Illuminate\Support\ServiceProvider;
@@ -41,6 +42,7 @@ class AppServiceProvider extends ServiceProvider
                 'servicesCount' => $repository->count(),
                 'lastDate' => $repository->orderBy('created_at' , 'desc')->first()->created_at->diffForHumans(),
                 'services' => $repository->pushCriteria(ServicesFrontendLastCriteria::class)->get(),
+                'users' => User::all(),
             ]);
         });
 
