@@ -3,13 +3,10 @@
 namespace App\Http\Controllers\Dashboard;
 
 use App\Criteria\SelfServiceCriteria;
-use App\Models\Category;
 use App\Models\Service\Service;
 use App\Repositories\Service\ServiceRepositoryEloquent;
-use Illuminate\Http\FileHelpers;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use function MongoDB\BSON\toJSON;
 
 class ServicesController extends Controller
 {

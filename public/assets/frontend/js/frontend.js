@@ -879,18 +879,7 @@ $(window).on('load', function() {
             var indicatorLenght = $(this).attr('data-indicator-percentage');
             $(this).find("span").css({width: indicatorLenght + "%"});
         });
-        var uploadButton = {$button: $('.uploadButton-input'), $nameField: $('.uploadButton-file-name')};
-        uploadButton.$button.on('change', function () {
-            _populateFileField($(this));
-        });
 
-        function _populateFileField($button) {
-            var selectedFile = [];
-            for (var i = 0; i < $button.get(0).files.length; ++i) {
-                selectedFile.push($button.get(0).files[i].name + '<br>');
-            }
-            uploadButton.$nameField.html(selectedFile);
-        }
 
         $('.default-slick-carousel').slick({
             infinite: false,

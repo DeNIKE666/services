@@ -30,25 +30,24 @@
                             <div class="col-xl-12">
                                 <div class="submit-field">
                                     <h5>Полное описание услуги</h5>
-                                    <textarea cols="30"  maxlength="2000" rows="5" name="body" id="txtTinyMCE" class="with-border" placeholder="Опишите подробно услугу, которую хотите предложить..">{{ old('body') }}</textarea>
+                                    <textarea cols="30"  maxlength="2000" rows="5" name="body" id="text" class="with-border" placeholder="Опишите подробно услугу, которую хотите предложить..">{{ old('body') }}</textarea>
                                     <p id="char"></p>
                                 </div>
                             </div>
 
                             <div class="col-xl-12">
-                                <div class="submit-field">
-                                    <h5>Картинка</h5>
-                                    <div class="avatar-wrapper">
-                                        <img class="profile-pic" src="{{ asset('assets/frontend/img/no_image.png') }}" alt=""/><div class="upload-button"></div>
-                                        <input class="file-upload" type="file" name="image" accept="image/*"/>
-                                    </div>
+                                <div class="uploadButton margin-bottom-30">
+                                    <input class="uploadButton-input" type="file" name="image" accept="image/*" id="file">
+                                    <label class="uploadButton-button ripple-effect" for="file"><i class="fal fa-image-polaroid padding-right-20" ></i> Загрузить</label>
+                                    <span class="uploadButton-file-name">загрузите главное изображение вашей услуги не более (5мб)</span>
                                 </div>
                             </div>
+
                             <div class="col-xl-12">
                                 <div class="uploadButton margin-bottom-30">
-                                    <input class="uploadButton-input" type="file" name="file" id="upload">
-                                    <label class="uploadButton-button ripple-effect" for="upload">Загрузить</label>
-                                    <span class="uploadButton-file-name">прикрепите файл инструкций пользователю для ознакомлений </span>
+                                    <input class="uploadButton-input" type="file" name="file" accept="/*" id="upload">
+                                    <label class="uploadButton-button ripple-effect" for="upload"><i class="fal fa-file-alt padding-right-20"></i> Загрузить</label>
+                                    <span class="uploadButton-file-name">загрузите файл который должен будет прочесть каждый покупатель не более (30 мб)</span>
                                 </div>
                             </div>
 
@@ -71,4 +70,7 @@
             </div>
         </div>
     </div>
+
+    @push('scripts')
+    @endpush
 @endsection

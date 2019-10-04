@@ -12,29 +12,47 @@ tinyMCE.init({
     height: 250,
     menubar: false,
     statusbar: false,
-    plugins: ['lists', 'emoticons'],
+    plugins: ['lists'],
     charwordcount_include_tags: false,
     spellchecker_language: 'ru',
-    toolbar: 'paste undo redo | bold italic underline| numlist bullist | emoticons',
+    toolbar: 'undo redo | bold italic underline| numlist bullist ',
     forced_root_block : '',
+    paste_text_sticky: true,
+    paste_text_sticky_default: true,
    // forced_root_block_attrs: { "class": "margin-bottom-10 p-seller"},
     setup: function (e) {
+
+        e.on('init', function (e) {
+            document.getElementById("char").innerHTML = "Введено символов: " + CountCharacters() +  ' из / 2000';
+        });
+
         e.on('keyUp', function (e) {
-            var len = tinymce.activeEditor.getContent().length;
-            var editor = tinymce.activeEditor.contentDocument.body;
-            var html = $('#char').text('Введено символов ' + len + ' из 2000').css('color' , '#737373');
-
-            if ( len > 2000) {
-                editor.style.backgroundColor = "rgba(212, 212, 212, 0.42)";
-                $('button[type="submit"]').attr('disabled', true).css('background-color', '#e24a4a');
-                html.text('Вы привысили допустимое значение текста').css('color' , '#fb4545db');
-            } else {
-                editor.style.backgroundColor = "rgb(255, 255, 255)";
-                $('button[type="submit"]').attr('disabled', false).css('background-color', '#2a41e8');
-                html = html;
-            }
-
+            document.getElementById("char").innerHTML = "Введено символов: " + CountCharacters() +  ' из / 2000';
+            ValidateCharacterLength();
         });
     }
 });
 
+function CountCharacters() {
+    var body = tinymce.get("text").getBody();
+    var content = tinymce.trim(body.innerText || body.textContent);
+    return content.length;
+};
+
+function ValidateCharacterLength() {
+
+    var max = 2000;
+    var count = CountCharacters();
+    var char = $('#char');
+    var button = $('button[type=submit]');
+
+    if (count > max) {
+        char.text('Вы привысили допустимое значение текста, масимум допустимо ' + max).css('color' , 'red');
+        button.attr('disabled', true).css('background-color' , 'red');
+    }
+
+    else {
+        char.css('color' ,'#737373');
+        button.attr('disabled' , false).css('background-color' , '#2a41e8');
+    }
+}

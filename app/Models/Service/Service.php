@@ -32,6 +32,10 @@ class Service extends Model implements Transformable
         'updated_at'
     ];
 
+    protected $hidden = [
+        'view', 'status',
+    ];
+
     public function file() {
         return $this->file !== null ? 'storage/' . $this->file : null;
     }
