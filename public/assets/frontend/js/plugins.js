@@ -61588,13 +61588,12 @@ tinyMCE.init({
   height: 250,
   menubar: false,
   statusbar: false,
-  plugins: ['lists'],
+  plugins: ['lists', 'paste'],
   charwordcount_include_tags: false,
   spellchecker_language: 'ru',
   toolbar: 'undo redo | bold italic underline| numlist bullist ',
   forced_root_block: '',
-  paste_text_sticky: true,
-  paste_text_sticky_default: true,
+  paste_enable_default_filters: true,
   // forced_root_block_attrs: { "class": "margin-bottom-10 p-seller"},
   setup: function setup(e) {
     e.on('init', function (e) {

@@ -16,8 +16,7 @@
                 <nav id="navigation">
                     <ul id="responsive">
                         <li><a href="/"><i class="fal fa-home-lg-alt"></i> Главная</a></li>
-                        <li><a href="/"><i class="fal fa-question"></i> Информация</a></li>
-                        <li><a href="/"><i class="fal fa-user-headset"></i> Информация</a></li>
+                        <li><a href="{{ route('frontend.info') }}"><i class="fal fa-question"></i> Информация</a></li>
                     </ul>
                 </nav>
 

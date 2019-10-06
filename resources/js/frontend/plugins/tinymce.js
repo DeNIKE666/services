@@ -12,13 +12,12 @@ tinyMCE.init({
     height: 250,
     menubar: false,
     statusbar: false,
-    plugins: ['lists'],
+    plugins: ['lists' , 'paste'],
     charwordcount_include_tags: false,
     spellchecker_language: 'ru',
     toolbar: 'undo redo | bold italic underline| numlist bullist ',
     forced_root_block : '',
-    paste_text_sticky: true,
-    paste_text_sticky_default: true,
+    paste_enable_default_filters: true,
    // forced_root_block_attrs: { "class": "margin-bottom-10 p-seller"},
     setup: function (e) {
 
@@ -49,9 +48,7 @@ function ValidateCharacterLength() {
     if (count > max) {
         char.text('Вы привысили допустимое значение текста, масимум допустимо ' + max).css('color' , 'red');
         button.attr('disabled', true).css('background-color' , 'red');
-    }
-
-    else {
+    } else {
         char.css('color' ,'#737373');
         button.attr('disabled' , false).css('background-color' , '#2a41e8');
     }

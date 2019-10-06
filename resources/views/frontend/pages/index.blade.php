@@ -5,30 +5,24 @@
 @section('content')
 <div class="intro-banner" data-background-image="https://image.freepik.com/free-vector/banner-background-with-low-poly_1048-10730.jpg">
     <div class="container">
-
         <!-- Intro Headline -->
         <div class="row">
             <div class="col-md-12">
                 <div class="banner-headline">
-
                     <p class="p_text"><i class="fad fa-check"></i> лучшее решение проявить себя</p>
                     <br>
-
                    <p class="p_text_">Площадка создана для людей которые занимаються <strong class="color">творчеством</strong> и хотят на этом заработать, продавая своё творчество другим пользователям</p>
                 </div>
             </div>
         </div>
-
         <!-- Stats -->
         <div class="row">
             <div class="col-md-12">
                 <ul class="intro-stats margin-top-45 hide-under-992px">
-
                     <li>
                         <strong class="counter">{{ $users->count()  }}</strong>
                         <span>Пользователей</span>
                     </li>
-
                     <li>
                         <strong class="counter">{{ $servicesCount }}</strong>
                         <span>Всего услуг</span>
@@ -40,7 +34,6 @@
                 </ul>
             </div>
         </div>
-
     </div>
 </div>
 
@@ -48,22 +41,17 @@
 <div class="section margin-top-65 margin-bottom-65">
     <div class="container">
         <div class="row">
-
-            <!-- Section Headline -->
             <div class="col-xl-12">
                 <div class="section-headline centered margin-top-0 margin-bottom-45">
                     <h3>Категории услуг</h3>
                 </div>
             </div>
-
             @forelse($categories as $categoryItem)
-
                 <div class="col-xl-3 col-md-3">
                     <a href="{{ route('category.show', $categoryItem->id) }}" class="photo-box"
                        data-background-image="{{ $categoryItem->image }}">
                         <div class="photo-box-content">
                             <h3>{{ $categoryItem->title }}</h3>
-
                             <span>{{ $categoryItem->countParent($categoryItem->id) }}</span>
                         </div>
                     </a>
@@ -81,17 +69,12 @@
     <div class="container">
         <div class="row">
             <div class="col-xl-12">
-
-                <!-- Section Headline -->
                 <div class="section-headline margin-top-0 margin-bottom-35">
                     <h3>ПОСЛЕДНИИ УCЛУГИ НА ПЛОЩАДКЕ</h3>
                     <p>показаны товары с привлекательной ценой!</p>
                 </div>
-
-                <!-- Jobs Container -->
                 <div class="listings-container compact-list-layout margin-top-35">
                     @foreach ($services as $service)
-
                         <!-- Service Listing -->
                             <a href="{{ route('user.sell', $service->id) }}" class="job-listing with-apply-button">
 

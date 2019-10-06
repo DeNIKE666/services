@@ -40,7 +40,7 @@ class AppServiceProvider extends ServiceProvider
             $view->with([
                 'categories' => Category::defaultOrder()->get()->toTree(),
                 'servicesCount' => $repository->count(),
-                'lastDate' => $repository->orderBy('created_at' , 'desc')->first()->created_at->diffForHumans(),
+                'lastDate' => $repository->count() ? $repository->orderBy('created_at' , 'desc')->first()->created_at->diffForHumans() : 'Нет данных',
                 'services' => $repository->pushCriteria(ServicesFrontendLastCriteria::class)->get(),
                 'users' => User::all(),
             ]);
