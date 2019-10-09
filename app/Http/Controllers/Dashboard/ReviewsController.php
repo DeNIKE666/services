@@ -17,7 +17,6 @@ class ReviewsController extends Controller
 
     public function create(Request $request, $id)
     {
-
         $order = Order::find($id);
 
         if ($order->existsReview()->first()) :
@@ -31,12 +30,20 @@ class ReviewsController extends Controller
             'text' => $request->input('text'),
         ]);
 
+        $order->userSeller->increment('rating', 25);
+
         return redirect()->back()->with('success', 'Отзыв отправлен');
     }
 
+
+    /**
+     * @param Request $request
+     * @param $id
+     * @return \Illuminate\Http\RedirectResponse
+     */
+
     public function edit(Request $request, $id)
     {
-
        $review = Review::find($id);
 
        $review->update([

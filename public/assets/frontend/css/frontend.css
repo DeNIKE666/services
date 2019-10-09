@@ -3063,7 +3063,7 @@ body #backtotop a {
 
 .single-page-header .header-details li .star-rating {
     position: relative;
-    top: 6px
+    top: 30px;
 }
 
 .single-page-header .header-details ul li img.flag {
