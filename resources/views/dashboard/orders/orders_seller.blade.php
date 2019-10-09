@@ -44,7 +44,7 @@
                         </li>
 
                     @empty
-                        <p style="padding: 30px" class="text-center"> ИСТОРИЯ ПОКУПОК ПУСТА</p>
+                        <p style="padding: 30px" class="text-center"> ИСТОРИЯ ПРОДАЖ ПУСТА</p>
                     @endforelse
                 </ul>
             </div>

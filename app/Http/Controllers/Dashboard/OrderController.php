@@ -2,15 +2,25 @@
 
 namespace App\Http\Controllers\Dashboard;
 
+use App\Criteria\OrderCriteria;
+use App\Criteria\OrderSellerCriteria;
 use App\Models\Order;
 use App\Models\Review;
 use App\Models\Service\Service;
 use App\Models\User;
+use App\Repositories\Order\OrderRepositoryEloquent;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
 class OrderController extends Controller
 {
+    protected $repository;
+
+    public function __construct(OrderRepositoryEloquent $repositoryEloquent)
+    {
+        $this->repository = $repositoryEloquent;
+    }
+
     /**
      * @param $id
      * @return \Illuminate\Http\RedirectResponse
@@ -38,37 +48,39 @@ class OrderController extends Controller
     }
 
     /**
-     * @param $id
+     * @param $order
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     * @throws \Prettus\Repository\Exceptions\RepositoryException
      */
 
     public function openOrder($order)
     {
-        $order = Order::find($order);
+        $order = $this->repository->pushCriteria(OrderCriteria::class)->find($order);
 
         return view('dashboard.orders.open', compact('order'));
     }
 
     /**
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     * @throws \Prettus\Repository\Exceptions\RepositoryException
      */
 
     public function listsOrderBuyed()
     {
-        $orders = Order::where('user_buy', auth()->user()->id)
-            ->orderBy('created_at' , 'desc')->paginate(10);
+        $orders = $this->repository->pushCriteria(OrderCriteria::class)->paginate(5);
+
         return view('dashboard.orders.orders_buyed', compact('orders'));
     }
 
-
     /**
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     * @throws \Prettus\Repository\Exceptions\RepositoryException
      */
 
     public function listsOrderSeller()
     {
-        $orders = Order::where('user_seller', auth()->user()->id)
-            ->orderBy('created_at' , 'desc')->paginate(10);
+        $orders =  $this->repository->pushCriteria(OrderSellerCriteria::class)->paginate(5);
+
         return view('dashboard.orders.orders_seller', compact('orders'));
     }
 

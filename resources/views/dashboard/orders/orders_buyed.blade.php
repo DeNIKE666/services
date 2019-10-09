@@ -11,6 +11,7 @@
 
             <div class="content">
                 <ul class="dashboard-box-list">
+
                     @forelse($orders as $order)
 
                         <li>
