@@ -31,6 +31,7 @@ Route::prefix('dashboard')->namespace('Dashboard')->middleware('auth')->group(fu
         Route::get('/delete/{id}' , 'ServicesController@delete')->name('service.delete');
         Route::get('/deletes', 'ServicesController@deletes')->name('service.deletes');
         Route::any('/delete/file/{id}', 'ServicesController@removeFile')->name('service.remove.file');
+        Route::get('/up/{id}', 'ServicesController@up')->name('up.service');
     });
 
     Route::prefix('account')->group(function () {

@@ -16,6 +16,11 @@ class OrderController extends Controller
 {
     protected $repository;
 
+    /**
+     * OrderController constructor.
+     * @param OrderRepositoryEloquent $repositoryEloquent
+     */
+
     public function __construct(OrderRepositoryEloquent $repositoryEloquent)
     {
         $this->repository = $repositoryEloquent;

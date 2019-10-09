@@ -12,8 +12,7 @@
             <div class="full-page-sidebar-inner" data-simplebar>
                 <div class="sidebar-container">
                     <div class="sidebar-widget">
-                        <h3>Категории</h3>
-                        @include('__includes.frontend.categories.parent', ['prefix' => ''])
+                        @include('__includes.frontend.categories.option', ['prefix' => ''])
                     </div>
                     <div class="margin-top-2"></div>
                     <div class="sidebar-widget">
@@ -46,7 +45,11 @@
                             <div class="task-listing-details">
                                 <!-- Details -->
                                 <div class="task-listing-description">
-                                    <h3 class="task-listing-title">{{ $serviceItem->title }}</h3>
+                                    <h3 class="task-listing-title">{{ $serviceItem->title }}
+                                        @if ($serviceItem->updated_at > now())
+                                            <span style="float: right;"><i class="fad fa-paperclip"></i> </span>
+                                        @endif
+                                    </h3>
                                     <p class="text-muted">{!!  $serviceItem->limitBody(100) !!} </p>
                                 </div>
                             </div>
@@ -57,8 +60,7 @@
                                         <strong>{{ $serviceItem->amount }}  руб.</strong>
                                         <span>стоимость</span>
                                     </div>
-                                    <span class="button button-sliding-icon ripple-effect">Заказать <i
-                                                class="icon-material-outline-arrow-right-alt"></i></span>
+                                    <span class="button button-sliding-icon ripple-effect">Заказать <i class="icon-material-outline-arrow-right-alt"></i></span>
                                 </div>
                             </div>
                         </a>

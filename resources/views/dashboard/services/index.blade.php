@@ -42,6 +42,7 @@
                                     <a href="{{ route('service.edit', $service->id) }}" class="button gray ripple-effect ico"><i class="fal fa-edit"></i></a>
                                     <a href="{{ route('service.delete', $service->id) }}" class="button gray ripple-effect ico"><i class="fal fa-trash-alt"></i></a>
                                     <a href="{{ route('user.sell', $service->id) }}" class="button gray ripple-effect ico"><i class="fad fa-eye"></i></a>
+                                    <a href="{{ route('up.service', $service->id) }}" class="button gray ripple-effect ico"><i class="fad fa-level-up"></i></a>
                                 </div>
                             </li>
                         @empty

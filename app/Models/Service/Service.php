@@ -17,6 +17,7 @@ class Service extends Model implements Transformable
 {
     use TransformableTrait;
 
+
     protected $fillable = [
         'title',
         'short',
@@ -27,6 +28,7 @@ class Service extends Model implements Transformable
         'category_id',
         'file',
         'product',
+        'updated_at',
     ];
 
     protected $dates = [

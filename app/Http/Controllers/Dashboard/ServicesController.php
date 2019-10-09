@@ -7,6 +7,7 @@ use App\Models\Service\Service;
 use App\Repositories\Service\ServiceRepositoryEloquent;
 use App\Http\Requests\Service as ServiceRequest;
 use App\Http\Controllers\Controller;
+use Carbon\Carbon;
 
 class ServicesController extends Controller
 {
@@ -128,6 +129,20 @@ class ServicesController extends Controller
         endif;
 
        return $service->update(['file' => null,]);
+    }
+
+    public function up($id)
+    {
+        $service = Service::find($id);
+
+        if ($service->updated_at > now()) {
+            return redirect()->back()->with('error' , 'Услуга уже была поднята');
+         }
+
+        $service->updated_at = now()->addDays(3)->toDateTime();
+        $service->save();
+
+        return redirect()->back()->with('success' , 'Услуга в списке была поднята');
     }
 
 }
