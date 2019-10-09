@@ -28,6 +28,10 @@ class RouteServiceProvider extends ServiceProvider
     {
         //
         parent::boot();
+
+        Route::get('/download/{file}', function ($file) {
+            return \Storage::download($file);
+        })->where('file' , '.*')->name('download');
     }
 
     /**

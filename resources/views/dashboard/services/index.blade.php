@@ -9,18 +9,6 @@
         <!-- Dashboard Box -->
         <div class="col-xl-12">
 
-            @isset($services)
-                <div class="margin-bottom-50">
-                    <select class="selectpicker" multiple data-selected-text-format="count > 1">
-                        <option adata-icon="icon-material-outline-assignment" selected>Assignment</option>
-                        <option data-icon="icon-material-outline-access-alarm">Alarm</option>
-                        <option data-icon="icon-material-outline-account-circle">Account</option>
-                        <option data-icon="icon-material-outline-cake">Cake</option>
-                    </select>
-                </div>
-            @endisset
-
-
             <div class="dashboard-box margin-top-0">
 
                 <!-- Content -->
@@ -39,7 +27,7 @@
                                             <!-- Job Listing Footer -->
                                             <div class="job-listing-footer">
                                                 <ul>
-                                                    <li><i class="icon-material-outline-access-time"></i> 23 hours left</li>
+                                                    <li><i class="icon-material-outline-access-time"></i> {{ $service->created_at->diffForHumans() }}</li>
                                                 </ul>
                                             </div>
                                         </div>

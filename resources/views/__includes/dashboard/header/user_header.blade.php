@@ -8,7 +8,7 @@
 
                 <!-- Logo -->
                 <div id="logo">
-                    <a href="{{ route('dashboard') }}"><img src="http://www.vasterad.com/themes/hireo_082019/images/logo.png" alt=""></a>
+                    <a href="{{ route('dashboard') }}"><img src="https://image.flaticon.com/icons/svg/1055/1055662.svg" alt=""></a>
                 </div>
 
                 <!-- Main Navigation -->

@@ -7,7 +7,7 @@ import 'tinymce/themes/silver';
 tinyMCE.baseURL = "/assets/frontend/js/plugins/tinymce";// trailing slash important
 
 tinyMCE.init({
-    selector: "textarea",
+    selector: "#text",
     language: 'ru',
     height: 250,
     menubar: false,

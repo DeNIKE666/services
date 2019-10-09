@@ -2,47 +2,45 @@
 
 namespace App\Http\Controllers\Dashboard;
 
-use App\Models\User;
-use App\Repositories\UserRepositoryEloquent;
-use Illuminate\Http\Request;
+use App\Http\Requests\Profile;
 use App\Http\Controllers\Controller;
+use App\Models\User;
+use Illuminate\Support\Facades\Gate;
 
 class ProfileController extends Controller
 {
-    protected $user;
 
-    public function __construct(UserRepositoryEloquent $user)
+    /**
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
+
+    public function index()
     {
-        $this->user = $user;
-    }
-
-    public function index(Request $request) {
-
-        if ($request->isMethod('post'))
-        {
-            $request->validate([
-                'name' => ['required'],
-                'email' => ['required'],
-            ]);
-
-            $avatar = $this->user->deleteAvatar()->updateAvatar();
-
-            $request->user()->update([
-                'name' => $request->input('name'),
-                'email' => $request->input('email'),
-                'profile_type' => $request->input('profile_type'),
-                'password' => $request->input('password') ? bcrypt($request->input('password')) : $request->user()->password,
-                'avatar' => $avatar->avatar,
-            ]);
-
-            return redirect()->route('profile')->with('success' , 'Вы изменили информацию своего профиля');
-        }
-
         return view('dashboard.profile.index');
     }
+
+    /**
+     * @return \Illuminate\Http\RedirectResponse
+     */
 
     public function logout() {
         auth()->logout();
         return redirect()->route('dashboard');
+    }
+
+    /**
+     * @param Profile $avatar
+     * @return \Illuminate\Http\RedirectResponse
+     */
+
+    public function update(Profile $profile) {
+
+        $profile->updateUser();
+
+        if ($profile->hasFile('avatar')) {
+            $profile->updateAvatar();
+        }
+
+        return redirect()->route('profile')->with('success', 'Информация профиля обновлена');
     }
 }

@@ -60,13 +60,13 @@ return [
 
             'on' => [
                 //Enable, disable clearing the cache when you create an item
-                'create'=>true,
+                'create' =>true,
 
                 //Enable, disable clearing the cache when upgrading an item
-                'update'=>true,
+                'update' =>true,
 
                 //Enable, disable clearing the cache when you delete an item
-                'delete'=>true,
+                'delete' =>true,
             ]
         ],
         'params' => [

@@ -2,16 +2,10 @@
 
 namespace App\Providers;
 
-
-use App\Criteria\ServicesFrontendLastCriteria;
 use App\Models\Category;
-use App\Models\Services;
-
-use App\Models\User;
-use App\Repositories\Service\ServiceRepositoryEloquent as Repository;
-
+use App\Models\Service\Service;
+use App\Policies\ServicePolicy;
 use Illuminate\Support\ServiceProvider;
-use Prettus\Repository\Providers\RepositoryServiceProvider;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -20,13 +14,12 @@ class AppServiceProvider extends ServiceProvider
      *
      * @return void
      */
+
     public function register()
     {
         if ($this->app->environment() !== 'production') {
             $this->app->register(\Barryvdh\LaravelIdeHelper\IdeHelperServiceProvider::class);
         }
-
-        $this->app->register(RepositoryServiceProvider::class);
     }
 
     /**
@@ -34,24 +27,13 @@ class AppServiceProvider extends ServiceProvider
      *
      * @return void
      */
-    public function boot(Repository $repository)
+    public function boot()
     {
-        \View::composer('frontend.pages.index', function ($view) use ($repository) {
-            $view->with([
-                'categories' => Category::defaultOrder()->get()->toTree(),
-                'servicesCount' => $repository->count(),
-                'lastDate' => $repository->count() ? $repository->orderBy('created_at' , 'desc')->first()->created_at->diffForHumans() : 'Нет данных',
-                'services' => $repository->pushCriteria(ServicesFrontendLastCriteria::class)->get(),
-                'users' => User::all(),
-            ]);
-        });
-
         \View::composer('dashboard.*', function ($view) {
             $view->with([
                 'categories' => Category::defaultOrder()->get()->toTree(),
                 'user' => auth()->user(),
             ]);
         });
-
     }
 }

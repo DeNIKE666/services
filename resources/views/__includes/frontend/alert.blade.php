@@ -5,6 +5,11 @@
         @endforeach
         <a class="close"></a>
     </div>
+@elseif(Session::has('error'))
+    <div class="notification error closeable">
+        <p><i class="fad fa-check"></i> {{ Session::get('error') }}</p>
+        <a class="close"></a>
+    </div>
 @elseif(Session::has('success'))
     <div class="notification success closeable">
         <p><i class="fad fa-check"></i> {{ Session::get('success') }}</p>

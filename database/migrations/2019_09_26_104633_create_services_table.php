@@ -28,6 +28,7 @@ class CreateServicesTable extends Migration
             $table->integer('status')->default(1);
             $table->integer('views')->default(0);
             $table->string('file')->nullable();
+            $table->string('product')->nullable();
             $table->foreign('category_id')
                 ->references('id')
                 ->on('categories')

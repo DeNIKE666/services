@@ -9,7 +9,7 @@
     <!-- Row -->
     <div class="row">
 
-      <form action="{{ route('profile') }}" method="POST" enctype="multipart/form-data">
+      <form action="{{ route('profile.update') }}" method="POST" enctype="multipart/form-data">
         <!-- Dashboard Box -->
         <div class="col-xl-12">
             <div class="dashboard-box margin-top-0">
@@ -20,11 +20,12 @@
 
                         <div class="col-auto">
                             <div class="avatar-wrapper" data-tippy-placement="bottom" title="Изменить аватар">
-                                <img class="profile-pic" src="{{ asset($user->avatar() ) }}" alt="" />
+                                <img class="profile-pic" src="{{ $user->avatar() }}" alt="" />
                                 <div class="upload-button"></div>
                                 <input class="file-upload" name="avatar" type="file" accept="image/*"/>
                             </div>
                         </div>
+
 
                         <div class="col">
                             <div class="row">

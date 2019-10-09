@@ -24,7 +24,7 @@
                         <span>Пользователей</span>
                     </li>
                     <li>
-                        <strong class="counter">{{ $servicesCount }}</strong>
+                        <strong class="counter">{{ $services->count() }}</strong>
                         <span>Всего услуг</span>
                     </li>
                     <li>
@@ -52,7 +52,6 @@
                        data-background-image="{{ $categoryItem->image }}">
                         <div class="photo-box-content">
                             <h3>{{ $categoryItem->title }}</h3>
-                            <span>{{ $categoryItem->countParent($categoryItem->id) }}</span>
                         </div>
                     </a>
                 </div>
@@ -91,7 +90,7 @@
 
                                         <h2 class="job-listing-title">{{ $service->title }}</h2>
 
-                                        <p class="margin-bottom-10">{{ html_entity_decode(strip_tags($service->limitShort(200))) }}</p>
+                                        <p class="margin-bottom-10">{!! ($service->limitShort(200)) !!} </p>
 
                                         <div class="job-listing-footer">
                                             <ul>

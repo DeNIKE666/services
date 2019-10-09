@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Frontend;
 
 use App\Models\Service\Service;
 
+use App\Models\User;
 use App\Repositories\Service\ServiceRepositoryEloquent;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
@@ -22,4 +23,5 @@ class UserProductController extends Controller
             'service' => $service,
         ]);
     }
+
 }

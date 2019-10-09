@@ -2,6 +2,7 @@
 
 namespace App\Models\Service;
 
+use App\Models\Order;
 use App\Models\User;
 use Illuminate\Database\Eloquent\Model;
 use Prettus\Repository\Traits\TransformableTrait;
@@ -25,6 +26,7 @@ class Service extends Model implements Transformable
         'user_id',
         'category_id',
         'file',
+        'product',
     ];
 
     protected $dates = [

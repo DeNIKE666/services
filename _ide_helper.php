@@ -3,7 +3,7 @@
 
 /**
  * A helper file for Laravel 5, to provide autocomplete information to your IDE
- * Generated for Laravel 5.8.35 on 2019-09-28 11:25:56.
+ * Generated for Laravel 5.8.35 on 2019-10-08 15:57:04.
  *
  * This file should not be included in your code, only analyzed by your IDE!
  *
@@ -3365,35 +3365,6 @@ namespace Illuminate\Support\Facades {
         }
         
         /**
-         * Get a lock instance.
-         *
-         * @param string $name
-         * @param int $seconds
-         * @param string|null $owner
-         * @return \Illuminate\Contracts\Cache\Lock 
-         * @static 
-         */ 
-        public static function lock($name, $seconds = 0, $owner = null)
-        {
-                        /** @var \Illuminate\Cache\RedisStore $instance */
-                        return $instance->lock($name, $seconds, $owner);
-        }
-        
-        /**
-         * Restore a lock instance using the owner identifier.
-         *
-         * @param string $name
-         * @param string $owner
-         * @return \Illuminate\Contracts\Cache\Lock 
-         * @static 
-         */ 
-        public static function restoreLock($name, $owner)
-        {
-                        /** @var \Illuminate\Cache\RedisStore $instance */
-                        return $instance->restoreLock($name, $owner);
-        }
-        
-        /**
          * Remove all items from the cache.
          *
          * @return bool 
@@ -3401,45 +3372,32 @@ namespace Illuminate\Support\Facades {
          */ 
         public static function flush()
         {
-                        /** @var \Illuminate\Cache\RedisStore $instance */
+                        /** @var \Illuminate\Cache\FileStore $instance */
                         return $instance->flush();
         }
         
         /**
-         * Get the Redis connection instance.
+         * Get the Filesystem instance.
          *
-         * @return \Predis\ClientInterface 
+         * @return \Illuminate\Filesystem\Filesystem 
          * @static 
          */ 
-        public static function connection()
+        public static function getFilesystem()
         {
-                        /** @var \Illuminate\Cache\RedisStore $instance */
-                        return $instance->connection();
+                        /** @var \Illuminate\Cache\FileStore $instance */
+                        return $instance->getFilesystem();
         }
         
         /**
-         * Set the connection name to be used.
+         * Get the working directory of the cache.
          *
-         * @param string $connection
-         * @return void 
+         * @return string 
          * @static 
          */ 
-        public static function setConnection($connection)
+        public static function getDirectory()
         {
-                        /** @var \Illuminate\Cache\RedisStore $instance */
-                        $instance->setConnection($connection);
-        }
-        
-        /**
-         * Get the Redis database instance.
-         *
-         * @return \Illuminate\Contracts\Redis\Factory 
-         * @static 
-         */ 
-        public static function getRedis()
-        {
-                        /** @var \Illuminate\Cache\RedisStore $instance */
-                        return $instance->getRedis();
+                        /** @var \Illuminate\Cache\FileStore $instance */
+                        return $instance->getDirectory();
         }
         
         /**
@@ -3450,21 +3408,8 @@ namespace Illuminate\Support\Facades {
          */ 
         public static function getPrefix()
         {
-                        /** @var \Illuminate\Cache\RedisStore $instance */
+                        /** @var \Illuminate\Cache\FileStore $instance */
                         return $instance->getPrefix();
-        }
-        
-        /**
-         * Set the cache key prefix.
-         *
-         * @param string $prefix
-         * @return void 
-         * @static 
-         */ 
-        public static function setPrefix($prefix)
-        {
-                        /** @var \Illuminate\Cache\RedisStore $instance */
-                        $instance->setPrefix($prefix);
         }
          
     }
@@ -14738,6 +14683,235 @@ namespace Illuminate\Support {
  
 }
 
+namespace UxWeb\SweetAlert { 
+
+    /**
+     * 
+     *
+     */ 
+    class SweetAlert {
+        
+        /**
+         * Display an alert message with a text and an optional title.
+         * 
+         * By default the alert is not typed.
+         *
+         * @param string $text
+         * @param string $title
+         * @param string $icon
+         * @return \UxWeb\SweetAlert\SweetAlertNotifier $this
+         * @static 
+         */ 
+        public static function message($text = '', $title = null, $icon = null)
+        {
+                        /** @var \UxWeb\SweetAlert\SweetAlertNotifier $instance */
+                        return $instance->message($text, $title, $icon);
+        }
+        
+        /**
+         * Display a not typed alert message with a text and a title.
+         *
+         * @param string $text
+         * @param string $title
+         * @return \UxWeb\SweetAlert\SweetAlertNotifier $this
+         * @static 
+         */ 
+        public static function basic($text, $title)
+        {
+                        /** @var \UxWeb\SweetAlert\SweetAlertNotifier $instance */
+                        return $instance->basic($text, $title);
+        }
+        
+        /**
+         * Display an info typed alert message with a text and an optional title.
+         *
+         * @param string $text
+         * @param string $title
+         * @return \UxWeb\SweetAlert\SweetAlertNotifier $this
+         * @static 
+         */ 
+        public static function info($text, $title = '')
+        {
+                        /** @var \UxWeb\SweetAlert\SweetAlertNotifier $instance */
+                        return $instance->info($text, $title);
+        }
+        
+        /**
+         * Display a success typed alert message with a text and an optional title.
+         *
+         * @param string $text
+         * @param string $title
+         * @return \UxWeb\SweetAlert\SweetAlertNotifier $this
+         * @static 
+         */ 
+        public static function success($text, $title = '')
+        {
+                        /** @var \UxWeb\SweetAlert\SweetAlertNotifier $instance */
+                        return $instance->success($text, $title);
+        }
+        
+        /**
+         * Display an error typed alert message with a text and an optional title.
+         *
+         * @param string $text
+         * @param string $title
+         * @return \UxWeb\SweetAlert\SweetAlertNotifier $this
+         * @static 
+         */ 
+        public static function error($text, $title = '')
+        {
+                        /** @var \UxWeb\SweetAlert\SweetAlertNotifier $instance */
+                        return $instance->error($text, $title);
+        }
+        
+        /**
+         * Display a warning typed alert message with a text and an optional title.
+         *
+         * @param string $text
+         * @param string $title
+         * @return \UxWeb\SweetAlert\SweetAlertNotifier $this
+         * @static 
+         */ 
+        public static function warning($text, $title = '')
+        {
+                        /** @var \UxWeb\SweetAlert\SweetAlertNotifier $instance */
+                        return $instance->warning($text, $title);
+        }
+        
+        /**
+         * Set the duration for this alert until it autocloses.
+         *
+         * @param int $milliseconds
+         * @return \UxWeb\SweetAlert\SweetAlertNotifier $this
+         * @static 
+         */ 
+        public static function autoclose($milliseconds = null)
+        {
+                        /** @var \UxWeb\SweetAlert\SweetAlertNotifier $instance */
+                        return $instance->autoclose($milliseconds);
+        }
+        
+        /**
+         * Add a confirmation button to the alert.
+         *
+         * @param string $buttonText
+         * @return \UxWeb\SweetAlert\SweetAlertNotifier $this
+         * @static 
+         */ 
+        public static function confirmButton($buttonText = 'OK', $overrides = array())
+        {
+                        /** @var \UxWeb\SweetAlert\SweetAlertNotifier $instance */
+                        return $instance->confirmButton($buttonText, $overrides);
+        }
+        
+        /**
+         * Add a cancel button to the alert.
+         *
+         * @param string $buttonText
+         * @param array $overrides
+         * @return \UxWeb\SweetAlert\SweetAlertNotifier $this
+         * @static 
+         */ 
+        public static function cancelButton($buttonText = 'Cancel', $overrides = array())
+        {
+                        /** @var \UxWeb\SweetAlert\SweetAlertNotifier $instance */
+                        return $instance->cancelButton($buttonText, $overrides);
+        }
+        
+        /**
+         * Add a new custom button to the alert.
+         *
+         * @param string $key
+         * @param string $buttonText
+         * @param array $overrides
+         * @return \UxWeb\SweetAlert\SweetAlertNotifier $this
+         * @static 
+         */ 
+        public static function addButton($key, $buttonText, $overrides = array())
+        {
+                        /** @var \UxWeb\SweetAlert\SweetAlertNotifier $instance */
+                        return $instance->addButton($key, $buttonText, $overrides);
+        }
+        
+        /**
+         * Toggle close the alert message when clicking outside.
+         *
+         * @param string $buttonText
+         * @return \UxWeb\SweetAlert\SweetAlertNotifier $this
+         * @static 
+         */ 
+        public static function closeOnClickOutside($value = true)
+        {
+                        /** @var \UxWeb\SweetAlert\SweetAlertNotifier $instance */
+                        return $instance->closeOnClickOutside($value);
+        }
+        
+        /**
+         * Make this alert persistent with a confirmation button.
+         *
+         * @param string $buttonText
+         * @return \UxWeb\SweetAlert\SweetAlertNotifier $this
+         * @static 
+         */ 
+        public static function persistent($buttonText = 'OK')
+        {
+                        /** @var \UxWeb\SweetAlert\SweetAlertNotifier $instance */
+                        return $instance->persistent($buttonText);
+        }
+        
+        /**
+         * Make Message HTML view.
+         *
+         * @param bool|true $html
+         * @return \UxWeb\SweetAlert\SweetAlertNotifier $this
+         * @static 
+         */ 
+        public static function html()
+        {
+                        /** @var \UxWeb\SweetAlert\SweetAlertNotifier $instance */
+                        return $instance->html();
+        }
+        
+        /**
+         * Return the current alert configuration.
+         *
+         * @return array 
+         * @static 
+         */ 
+        public static function getConfig($key = null)
+        {
+                        /** @var \UxWeb\SweetAlert\SweetAlertNotifier $instance */
+                        return $instance->getConfig($key);
+        }
+        
+        /**
+         * Customize alert configuration "by hand".
+         *
+         * @return array 
+         * @static 
+         */ 
+        public static function setConfig($config = array())
+        {
+                        /** @var \UxWeb\SweetAlert\SweetAlertNotifier $instance */
+                        return $instance->setConfig($config);
+        }
+        
+        /**
+         * Return the current alert configuration as Json.
+         *
+         * @return string 
+         * @static 
+         */ 
+        public static function getJsonConfig()
+        {
+                        /** @var \UxWeb\SweetAlert\SweetAlertNotifier $instance */
+                        return $instance->getJsonConfig();
+        }
+         
+    }
+ 
+}
+
 namespace Barryvdh\Debugbar { 
 
     /**
@@ -15569,6 +15743,75 @@ namespace DaveJamesMiller\Breadcrumbs\Facades {
         public static function hasMacro($name)
         {
                         return \DaveJamesMiller\Breadcrumbs\BreadcrumbsManager::hasMacro($name);
+        }
+         
+    }
+ 
+}
+
+namespace Intervention\Image\Facades { 
+
+    /**
+     * 
+     *
+     */ 
+    class Image {
+        
+        /**
+         * Overrides configuration settings
+         *
+         * @param array $config
+         * @return self 
+         * @static 
+         */ 
+        public static function configure($config = array())
+        {
+                        /** @var \Intervention\Image\ImageManager $instance */
+                        return $instance->configure($config);
+        }
+        
+        /**
+         * Initiates an Image instance from different input types
+         *
+         * @param mixed $data
+         * @return \Intervention\Image\Image 
+         * @static 
+         */ 
+        public static function make($data)
+        {
+                        /** @var \Intervention\Image\ImageManager $instance */
+                        return $instance->make($data);
+        }
+        
+        /**
+         * Creates an empty image canvas
+         *
+         * @param int $width
+         * @param int $height
+         * @param mixed $background
+         * @return \Intervention\Image\Image 
+         * @static 
+         */ 
+        public static function canvas($width, $height, $background = null)
+        {
+                        /** @var \Intervention\Image\ImageManager $instance */
+                        return $instance->canvas($width, $height, $background);
+        }
+        
+        /**
+         * Create new cached image and run callback
+         * (requires additional package intervention/imagecache)
+         *
+         * @param \Closure $callback
+         * @param int $lifetime
+         * @param boolean $returnObj
+         * @return \Image 
+         * @static 
+         */ 
+        public static function cache($callback, $lifetime = null, $returnObj = false)
+        {
+                        /** @var \Intervention\Image\ImageManager $instance */
+                        return $instance->cache($callback, $lifetime, $returnObj);
         }
          
     }
@@ -18371,9 +18614,13 @@ namespace  {
 
     class View extends \Illuminate\Support\Facades\View {}
 
+    class Alert extends \UxWeb\SweetAlert\SweetAlert {}
+
     class Debugbar extends \Barryvdh\Debugbar\Facade {}
 
     class Breadcrumbs extends \DaveJamesMiller\Breadcrumbs\Facades\Breadcrumbs {}
+
+    class Image extends \Intervention\Image\Facades\Image {}
  
 }
 

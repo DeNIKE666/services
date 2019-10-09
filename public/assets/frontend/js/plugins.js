@@ -61583,7 +61583,7 @@ __webpack_require__.r(__webpack_exports__);
 tinyMCE.baseURL = "/assets/frontend/js/plugins/tinymce"; // trailing slash important
 
 tinyMCE.init({
-  selector: "textarea",
+  selector: "#text",
   language: 'ru',
   height: 250,
   menubar: false,

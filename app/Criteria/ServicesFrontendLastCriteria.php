@@ -2,7 +2,6 @@
 
 namespace App\Criteria;
 
-use Carbon\Carbon;
 use Prettus\Repository\Contracts\CriteriaInterface;
 use Prettus\Repository\Contracts\RepositoryInterface;
 

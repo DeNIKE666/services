@@ -5,8 +5,6 @@ namespace App\Repositories;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 use Prettus\Repository\Eloquent\BaseRepository;
-use Prettus\Repository\Criteria\RequestCriteria;
-use App\Interfaces\UserRepository;
 use App\Models\User;
 
 /**
@@ -14,9 +12,9 @@ use App\Models\User;
  *
  * @package namespace App\Repositories;
  */
-class UserRepositoryEloquent extends BaseRepository implements UserRepository
+class UserRepositoryEloquent extends BaseRepository
 {
-    protected $storage = 'public';
+    protected $user;
 
     public function model()
     {
@@ -24,35 +22,28 @@ class UserRepositoryEloquent extends BaseRepository implements UserRepository
     }
 
     /**
-     * Boot up the repository, pushing criteria
-     */
-    public function boot()
-    {
-        $this->pushCriteria(app(RequestCriteria::class));
-    }
-
-    /**
+     * @param User $user
      * @return $this
      */
 
-    public function deleteAvatar()
+    public function userFind(User $user) {
+        $this->user = $user;
+        return $this;
+    }
+
+    /**
+     * @param Request $request
+     * @return false|string
+     */
+
+    public function updateAvatar(Request $request)
     {
-        if (\request()->hasFile('avatar')) {
-            Storage::disk($this->storage)->delete(\request()->user()->avatar);
+        $disk = Storage::disk($this->storage);
+
+        if ($disk->exists($this->user->avatar)) {
+            $disk->delete($this->user->avatar);
         }
 
-        return $this;
-    }
-
-    /**
-     * @return $this
-     */
-
-    public function updateAvatar()
-    {
-        \request()->hasFile('avatar') ?
-            $this->avatar = \request()->file('avatar')->store('avatars', 'public') :
-            $this->avatar = \request()->user()->avatar;
-        return $this;
+        return $disk->putFile('avatars/' . $this->user->login , $request->file('avatar'));
     }
 }

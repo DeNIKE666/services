@@ -2,7 +2,6 @@
 
 namespace App\Repositories\Service;
 
-use Illuminate\Container\Container as Application;
 use Illuminate\Support\Facades\Storage;
 use Prettus\Repository\Eloquent\BaseRepository;
 use Prettus\Repository\Contracts\CacheableInterface;
@@ -40,20 +39,9 @@ class ServiceRepositoryEloquent extends BaseRepository implements  CacheableInte
         return $this;
     }
 
-    public function prevDeleteFile($path)
-    {
-        if (Storage::disk('public')->exists($path))
-        {
-            Storage::disk('public')->delete($path);
-        }
-
-        return $this;
-    }
-
-
     public function dropFiles()
     {
-        Storage::disk('public')->delete([$this->service->image, $this->service->file]);
+        Storage::delete([$this->service->image, $this->service->file, $this->service->product]);
         return $this;
     }
 

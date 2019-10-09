@@ -1,14 +1,21 @@
 <?php
 
 namespace App\Models;
+
 use App\Models\Service\Service;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
+
 use Illuminate\Notifications\Notifiable;
+use Illuminate\Support\Facades\Storage;
+use Prettus\Repository\Contracts\Transformable;
+
+use Prettus\Repository\Traits\TransformableTrait;
 
 class User extends Authenticatable
 {
     use Notifiable;
+
     /**
      * The attributes that are mass assignable.
      *
@@ -38,8 +45,8 @@ class User extends Authenticatable
     ];
 
     public function avatar() {
-        return $this->avatar !== null ? 'storage/' . $this->avatar :
-                  asset('assets/frontend/img/noavatar.png');
+        return $this->avatar !== null
+            ? Storage::url($this->avatar) : asset('assets/frontend/img/noavatar.png');
     }
 
     public function services() {
@@ -50,5 +57,9 @@ class User extends Authenticatable
     {
         return collect($this->services()
             ->whereStatus(1)->pluck('amount'))->sum();
+    }
+
+    public function reviews() {
+        return $this->hasMany(Review::class , 'seller_id' , 'id');
     }
 }

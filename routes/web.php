@@ -12,6 +12,10 @@ Route::prefix('/')->namespace('Frontend')->group(function () {
     Route::prefix('product')->group(function () {
         Route::get('/show/{productid}/' , 'UserProductController@show')->name('user.sell');
     });
+
+    Route::prefix('user')->group(function () {
+        Route::get('/{login}', 'UserController@showSeller')->name('show.seller');
+    });
 });
 
 Route::prefix('dashboard')->namespace('Dashboard')->middleware('auth')->group(function (){
@@ -30,8 +34,17 @@ Route::prefix('dashboard')->namespace('Dashboard')->middleware('auth')->group(fu
     });
 
     Route::prefix('account')->group(function () {
-        Route::any('/profile' , 'ProfileController@index')->name('profile');
+        Route::get('/profile' , 'ProfileController@index')->name('profile');
+        Route::post('/update' , 'ProfileController@update')->name('profile.update');
         Route::get('/logout', 'ProfileController@logout')->name('logout.dashboard');
+    });
+
+    Route::prefix('order')->group(function () {
+        Route::get('/service/{id}' , 'OrderController@order')->name('order.create');
+        Route::get('/open/{id}' , 'OrderController@complete')->name('order.buy.complete');
+        Route::get('/lists/orders' , 'OrderController@listsOrderBuyed')->name('order.lists.buyed');
+        Route::get('/lists/selled' , 'OrderController@listsOrderSeller')->name('order.lists.seller');
+        Route::post('/review/{id}' , 'OrderController@review')->name('order.review');
     });
 });
 

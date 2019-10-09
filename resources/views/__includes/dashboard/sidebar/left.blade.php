@@ -26,6 +26,7 @@
                                 <li><a href="{{ route('service.deletes') }}"><i class="fal fa-trash-alt"></i> Удалить мои услуги</a></li>
                             </ul>
                         </li>
+                        <li class=""><a href="{{ route('order.lists.seller') }}"><i class="fal fa-shopping-cart"></i>  Мои продажи </a></li>
                     </ul>
                 </div>
             </div>
@@ -48,6 +49,7 @@
                             <ul data-submenu-title="Управление">
                                 <li><a href="{{ route('profile') }}"><i class="fal fa-user"></i> Профиль</a></li>
                                 <li class=""><a href=""><i class="fad fa-money-check-alt"></i>  Пополнить баланс </a></li>
+                                <li class=""><a href="{{ route('order.lists.buyed') }}"><i class="fal fa-shopping-cart"></i>  Мои покупки </a></li>
                             </ul>
                         </div>
                     </div>

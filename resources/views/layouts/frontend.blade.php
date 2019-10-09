@@ -32,12 +32,18 @@
 
    <!-- Footer / End -->
 
+    <!-- Include this after the sweet alert js file -->
 </div>
 <!-- Wrapper / End -->
+
 
 <!-- Scripts
 ================================================== -->
 <script src="{{ mix('assets/frontend/js/frontend.js') }}"></script>
+
+@include('vendor.sweetalert.alert')
+
+<!-- Include this after the sweet alert js file -->
 
 @stack('scripts')
 

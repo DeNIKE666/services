@@ -47,14 +47,14 @@
                                 <!-- Details -->
                                 <div class="task-listing-description">
                                     <h3 class="task-listing-title">{{ $serviceItem->title }}</h3>
-                                    <p class="text-muted">{{ $serviceItem->limitBody(100) }}</p>
+                                    <p class="text-muted">{!!  $serviceItem->limitBody(100) !!} </p>
                                 </div>
                             </div>
 
                             <div class="task-listing-bid">
                                 <div class="task-listing-bid-inner">
                                     <div class="task-offers">
-                                        <strong>{{ $serviceItem->amount }}</strong>
+                                        <strong>{{ $serviceItem->amount }}  руб.</strong>
                                         <span>стоимость</span>
                                     </div>
                                     <span class="button button-sliding-icon ripple-effect">Заказать <i

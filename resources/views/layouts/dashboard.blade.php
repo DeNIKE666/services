@@ -68,6 +68,8 @@
     <script src="{{ mix('assets/frontend/js/frontend.js') }}"></script>
     <script src="{{ mix('assets/frontend/js/plugins.js') }}"></script>
 
+    @include('sweetalert::alert')
+
     @stack('scripts')
 
 </body>

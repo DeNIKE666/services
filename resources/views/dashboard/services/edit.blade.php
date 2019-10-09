@@ -44,13 +44,29 @@
                                 </div>
                             </div>
                             <div class="col-xl-12">
+                                <h5>Файл для прочтения</h5> <br>
                                 <div class="uploadButton margin-bottom-30">
-                                    <input class="uploadButton-input" type="file" name="file" id="upload">
-                                    <label class="uploadButton-button ripple-effect" for="upload" id="textButton">{{ $service->file == null ? 'Загрузить файл' : 'Обновить файл' }} </label>
+                                    <input class="uploadButton-input" type="file" name="file" id="file">
+                                    <label class="uploadButton-button ripple-effect" for="file" id="textButton">{{ $service->file == null ? 'Загрузить файл' : 'Обновить файл' }} </label>
                                     <div id="blockFile" class="blockUpload">
-                                        @if ($service->file())
-                                            <a href="{{ asset($service->file()) }}" class="uploadButton-button ripple-effect margin-left-10"><i class="fad fa-eye"></i></a>
-                                            <a id="deleteFile" value="remove" href="JavaScript:void(0);" onclick="deleteFile()" class="uploadButton-button ripple-effect margin-left-10"><i class="fad fa-trash-alt"></i></a>
+                                        @if ($service->file)
+                                            <a href="{{ asset('storage/' . $service->file) }}" class="uploadButton-button ripple-effect margin-left-10"><i class="fad fa-eye"></i></a>
+                                            <a href="JavaScript:void(0);" class="uploadButton-button ripple-effect margin-left-10"><i class="fad fa-trash-alt"></i></a>
+                                        @endif
+                                    </div>
+                                    <span class="uploadButton-file-name" id="labelBlockUpload"></span>
+                                </div>
+                            </div>
+
+                            <div class="col-xl-12">
+                                <h5>Файл который получит покупатель</h5> <br>
+                                <div class="uploadButton margin-bottom-30">
+                                    <input class="uploadButton-input" type="file" name="product" id="product">
+                                    <label class="uploadButton-button ripple-effect" for="product" id="textButton">{{ $service->product == null ? 'Загрузить файл' : 'Обновить файл' }} </label>
+                                    <div id="blockFile" class="blockUpload">
+                                        @if ($service->product)
+                                            <a href="{{ asset('storage/' . $service->product) }}" class="uploadButton-button ripple-effect margin-left-10"><i class="fad fa-eye"></i></a>
+                                            <a  href="JavaScript:void(0);" class="uploadButton-button ripple-effect margin-left-10"><i class="fad fa-trash-alt"></i></a>
                                         @endif
                                     </div>
                                     <span class="uploadButton-file-name" id="labelBlockUpload"></span>
@@ -80,27 +96,4 @@
         </div>
     </div>
     <!-- Row / End -->
-    @push('scripts')
-        <script>
-
-            var label = $('#labelBlockUpload');
-
-            function deleteFile() {
-                $.post({
-                    url: '{{ route('service.remove.file', $service) }}',
-                    success: function (result) {
-                        if (result == 'ok') {
-                            $('#blockFile').css('display', 'none');
-                            $('#textButton').text('Загрузить файл');
-                            label.text('файл инструкций для ознакомления');
-                            Toast.fire({
-                                type: 'success',
-                                title: 'Файл успешно удалён'
-                            })
-                        }
-                    },
-                });
-            }
-        </script>
-    @endpush
 @endsection

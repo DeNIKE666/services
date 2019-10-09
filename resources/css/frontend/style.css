@@ -134,6 +134,11 @@ a:focus, a:hover {
     color: #333
 }
 
+strong , b {
+    font-weight: 700;
+    color: #6679ff;
+}
+
 img {
     max-width: 100%
 }
@@ -3972,7 +3977,8 @@ span.blog-item-tag {
 
 .single-page-section h3 {
     margin-bottom: 20px;
-    font-size: 20px
+    font-size: 20px;
+    font-weight: 600;
 }
 
 .single-page-section .job-listing h3.job-listing-title {
@@ -6815,8 +6821,8 @@ table.basic-table {
 }
 
 .star-rating .star.half:after, .star-rating .star:before {
-    font-family: material-icons;
-    content: "\e988";
+    font-family: "Font Awesome 5 Pro";
+    content: "\f005";
     display: block;
     color: #febe42;
     font-size: 22px
@@ -14422,7 +14428,7 @@ a.apply-now-button i {
 .attachment-box {
     display: flex;
     margin: 0 20px 20px 0;
-    background-color: #f4f4f4;
+    background-color: #22a761c7;
     border-radius: 4px 0 4px 4px;
     font-weight: 600;
     padding: 15px 20px;
@@ -14430,12 +14436,17 @@ a.apply-now-button i {
     padding-right: 25px;
     line-height: 24px;
     flex-direction: column;
-    color: #666;
+    color: #fff;
     position: relative;
     transition: .3s;
     flex: 0 1 calc(50% - 21px);
     cursor: default;
-    position: relative
+    position: relative;
+}
+
+.attach_text {
+    color: #13131399;
+    margin-bottom: 25px;
 }
 
 .single-page-section .attachment-box {
@@ -14481,13 +14492,11 @@ a.attachment-box:hover:before {
 .attachment-box i {
     display: block;
     font-style: normal;
-    font-size: 14px;
-    color: #999;
-    font-weight: 500;
-    margin-top: 10px;
+    font-size: 25px;
+    color: #ffffff61;
     position: absolute;
-    bottom: 10px;
-    transition: .3s
+    transition: .3s;
+    top: 44px;
 }
 
 a.attachment-box:hover i {
@@ -18746,4 +18755,8 @@ a.headline-link:after {
     color: #595b73;
     font-size: 20px;
     line-height: 45px;
+}
+
+.list_ {
+    line-height: 50px;
 }
