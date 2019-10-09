@@ -5,6 +5,7 @@ namespace App\Providers;
 use App\Models\Category;
 use App\Models\Service\Service;
 use App\Policies\ServicePolicy;
+use Illuminate\Support\Facades\Blade;
 use Illuminate\Support\ServiceProvider;
 
 class AppServiceProvider extends ServiceProvider
@@ -34,6 +35,10 @@ class AppServiceProvider extends ServiceProvider
                 'categories' => Category::defaultOrder()->get()->toTree(),
                 'user' => auth()->user(),
             ]);
+        });
+
+        Blade::directive('money', function ($money) {
+            return "<?php echo number_format($money, 2); ?>";
         });
     }
 }

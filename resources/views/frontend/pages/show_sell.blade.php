@@ -20,9 +20,13 @@
                         </div>
                         <div class="right-side">
                             <div class="salary-box">
-                                <div class="salary-type">Общая сумма продаж</div>
-                                <div class="salary-amount">{{ $service->user->summarySellAmount() }} <i
-                                            class="fad fa-ruble-sign"></i></div>
+                                <div class="salary-type">Продано раз</div>
+                                <div class="salary-amount">{{ $service->orderService->count()}}</div>
+                            </div>
+
+                            <div class="salary-box">
+                                <div class="salary-type">Общая сумма</div>
+                                <div class="salary-amount">@money($amount) <i class="fad fa-ruble-sign"></i> </div>
                             </div>
                         </div>
                     </div>

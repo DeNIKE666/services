@@ -21,6 +21,7 @@ class CreateUsersTable extends Migration
             $table->integer('profile_type')->nullable();
             $table->string('password')->nullable();
             $table->string('avatar')->nullable();
+            $table->text('about')->nullable();
             $table->timestamps();
         });
     }

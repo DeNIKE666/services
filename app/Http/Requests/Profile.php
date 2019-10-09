@@ -28,6 +28,7 @@ class Profile extends FormRequest
             'email' => 'unique:users,email,'.$this->user()->id,
             'name' => 'required|min:5|max:50',
             'avatar' => 'mimes:jpeg,jpg,png,gif|max:1024',
+            'about' => 'required|max:1500',
         ];
     }
 
@@ -59,6 +60,7 @@ class Profile extends FormRequest
             'profile_type' => $this->input('profile_type'),
             'password' => $this->input('password') ? bcrypt($this->input('password')) : $this->user()->password,
             'avatar' => $this->user()->avatar,
+            'about' => $this->input('about'),
         ]);
     }
 

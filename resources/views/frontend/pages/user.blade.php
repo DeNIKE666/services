@@ -48,30 +48,30 @@
                         <h3><i class="fad fa-thumbs-up"></i> Отзывы заказчиков ({{ $user->reviews->count() }})</h3>
                     </div>
                     <ul class="boxed-list-ul">
-                        @forelse ($user->reviews as $review)
-
+                        @forelse ($reviews as $review)
                             <li>
                                 <div class="boxed-list-item">
-                                    <img src="{{ asset($review->user->avatar()) }}" class="margin-right-50" width="130" alt="">
+                                    <img src="{{ asset($review->user->avatar()) }}" class="img-review margin-right-50" width="130" alt="{{ $review->user->login }}">
                                     <div class="item-content margin-left-0">
                                         <h4><i class="fas fa-user"></i> {{ $review->user->login }}</h4>
                                         <div class="item-description">
                                             <p>{{ $review->text }} </p>
                                         </div>
                                         <div class="item-details padding-top-10">
-                                            <div class="detail-item"><i class="fal fa-clock"></i> {{ $review->created_at->diffForHumans()}}</div>
+                                            <div class="detail-item"><i class="fal fa-clock"></i> {{ $review->created_at->diffForHumans()}}
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
                             </li>
-
                         @empty
-                            НЕТ ОТЗЫВОВ
+                            <li>НЕТ ОТЗЫВОВ</li>
                         @endforelse
                     </ul>
-
                 </div>
                 <!-- Boxed List / End -->
+
+                {{ $reviews->links('__includes.frontend.paginator') }}
 
             </div>
 

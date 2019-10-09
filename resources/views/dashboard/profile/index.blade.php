@@ -76,6 +76,13 @@
                                     </div>
                                 </div>
 
+                                <div class="col-xl-12">
+                                    <div class="submit-field">
+                                        <h5>Заполните информацию о вас</h5>
+                                        <textarea class="with-border" name="about" placeholder="Напишите что-то о себе">{{ auth()->user()->about }}</textarea>
+                                    </div>
+                                </div>
+
                             </div>
                         </div>
                     </div>

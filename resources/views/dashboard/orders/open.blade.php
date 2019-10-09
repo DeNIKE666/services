@@ -9,7 +9,7 @@
         <li>Продавец: {{ $order->service->user->login }}</li>
         <li>Рейтинг продавца: {{ $order->service->user->rating }}</li>
         <li>Файл для ознакомления: <a href="{{ asset('storage/' . $order->service->file) }}">просмотреть</a></li>
-        <li>Купленный товар: <a href="{{ route('download', $order->service->product) }}">скачать</a></li>
+        <li>Купленный товар: <a href="{{ route('download', ['file' => $order->service->product]) }}">скачать</a></li>
     </ul>
 
     <form action="{{ route('order.review', $order) }}" method="POST">

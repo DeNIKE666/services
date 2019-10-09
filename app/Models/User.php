@@ -24,7 +24,12 @@ class User extends Authenticatable
 
 
     protected $fillable = [
-        'name', 'login', 'profile_type' ,'email', 'avatar', 'password',
+        'name',
+        'login',
+        'email',
+        'about',
+        'profile_type',
+        'avatar',
     ];
     /**
      * The attributes that should be hidden for arrays.
@@ -32,7 +37,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $hidden = [
-        'password', 'remember_token',
+       'password', 'remember_token',
     ];
     /**
      * The attributes that should be cast to native types.
@@ -44,22 +49,28 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
-    public function avatar() {
+    public function avatar()
+    {
         return $this->avatar !== null
             ? Storage::url($this->avatar) : asset('assets/frontend/img/noavatar.png');
     }
 
-    public function services() {
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+
+    public function services()
+    {
         return $this->hasMany(Service::class , 'user_id');
     }
 
-    public function summarySellAmount()
-    {
-        return collect($this->services()
-            ->whereStatus(1)->pluck('amount'))->sum();
-    }
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
 
-    public function reviews() {
+    public function reviews()
+    {
         return $this->hasMany(Review::class , 'seller_id' , 'id');
     }
+
 }

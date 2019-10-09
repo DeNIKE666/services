@@ -2964,7 +2964,6 @@ body #backtotop a {
 }
 
 .single-page-header .header-image img {
-    align-self: center;
     transform: translate3d(0, 0, 0)
 }
 
@@ -3155,7 +3154,8 @@ body #backtotop a {
         margin-top: 15px;
         margin-bottom: 20px;
         background-color: transparent;
-        box-shadow: none
+        box-shadow: none;
+        display: block;
     }
 
     .salary-box .salary-type {
@@ -16434,7 +16434,7 @@ body.gray {
 
 body p {
     font-size: 16px;
-    line-height: 27px;
+    line-height: 45px;
     word-break: break-word;
 }
 
@@ -18759,4 +18759,13 @@ a.headline-link:after {
 
 .list_ {
     line-height: 50px;
+}
+
+.boxed-list-item {
+    margin-left: -32px;
+}
+
+.img-review {
+    border-radius: 50%;
+    max-height: 120px;
 }

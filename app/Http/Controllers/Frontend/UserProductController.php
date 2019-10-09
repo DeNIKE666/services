@@ -15,12 +15,17 @@ class UserProductController extends Controller
     {
         $service  = $serviceRepositoryEloquent->find($productId);
 
+        $amount = $service->orderService->sum(function ($order) {
+            return $order->service->amount;
+        });
+
         if (auth()->user() && auth()->user()->profile_type == 0) :
             $service->increment('views', 1);
         endif;
 
         return view('frontend.pages.show_sell')->with([
             'service' => $service,
+            'amount' => $amount,
         ]);
     }
 

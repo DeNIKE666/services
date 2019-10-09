@@ -20,13 +20,18 @@ class OrderController extends Controller
     {
         $service = Service::find($id);
 
-        $service->user->increment('balance', $service->amount , ['rating' => $service->user->rating + 5]);
+        if (auth()->user()->balance <= $service->amount) {
+            return redirect()->back()->withToastError('Недостаточно средств');
+        }
 
         $order = Order::create([
             'user_buy' => auth()->user()->id,
             'user_seller' => $service->user_id,
             'service_id' => $service->id,
         ]);
+
+        $service->user->increment('balance', $service->amount);
+        auth()->user()->decrement('balance', $service->amount);
 
         return redirect()->route('order.buy.complete', $order->id);
     }

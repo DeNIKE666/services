@@ -38,6 +38,7 @@ class Service extends Model implements Transformable
         'view', 'status',
     ];
 
+
     public function file() {
         return $this->file !== null ? 'storage/' . $this->file : null;
     }
@@ -85,11 +86,12 @@ class Service extends Model implements Transformable
     }
 
     /**
-     * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
+     * @return mixed
      */
 
-    public function services() {
-        return $this->belongsToMany(Service::class);
+    public function orderService() {
+        return $this->hasMany(Order::class, 'service_id' , 'id');
     }
+
 
 }
