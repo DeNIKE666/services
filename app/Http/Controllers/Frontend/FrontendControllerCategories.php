@@ -22,20 +22,26 @@ class FrontendControllerCategories extends Controller
      * если нет то показывает все товары главной категории и ее подкатегорий
      */
 
-    public function show($id, Request $request)
+    public function show($id = null, Request $request)
     {
-        $categories = Category::defaultOrder()->get()->toTree();
+
+        $categories = Category::with('descendants')->pluck('id');
 
         $ids = Category::descendantsOf($id)->pluck('id');
 
-        $services =$this->repository->scopeQuery(function ($query) use ($ids, $id) {
-            return $query->whereIn('category_id', $ids)
-                         ->orWhere('category_id', $id)->orderBy('updated_at', 'desc');
-        })->paginate();
+        if ($id == null) {
+            $services = Service::whereIn('category_id', $categories)->paginate(10);
+        } else {
+
+            $services = $this->repository->scopeQuery(function ($query) use ($ids, $id, $categories) {
+                return $query->whereIn('category_id', $ids)
+                    ->orWhere('category_id', $id)->orderBy('updated_at', 'desc');
+            })->paginate(10);
+        }
 
         return view('frontend.pages.categories')->with([
             'services' => $services,
-            'categories' => $categories,
+            'categories' => Category::defaultOrder()->get()->toTree(),
         ]);
     }
 }
