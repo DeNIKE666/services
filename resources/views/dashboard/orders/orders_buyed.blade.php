@@ -11,9 +11,7 @@
 
             <div class="content">
                 <ul class="dashboard-box-list">
-
                     @forelse($orders as $order)
-
                         <li>
                             <!-- Job Listing -->
                             <div class="job-listing width-adjustment">

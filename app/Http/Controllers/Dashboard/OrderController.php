@@ -30,6 +30,10 @@ class OrderController extends Controller
     {
         $service = Service::find($id);
 
+        if (auth()->user()->id == $service->user_id) {
+            return redirect()->back()->withToastError('Вы не можете купить у самого себя');
+        }
+
         if (auth()->user()->balance <= $service->amount) {
             return redirect()->back()->withToastError('Недостаточно средств');
         }
