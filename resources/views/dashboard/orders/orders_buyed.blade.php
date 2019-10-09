@@ -22,9 +22,7 @@
 
                                     <!-- Details -->
                                     <div class="job-listing-description">
-                                        <h3 class="job-listing-title"><a href="#">{{ $order->service->title }}</a> <span
-                                                    class="dashboard-status-button yellow">{{ $order->service->categories->parent->title }}</span>
-                                        </h3>
+                                        <h3 class="job-listing-title"><a href="#">{{ $order->service->title }}</a> <span class="dashboard-status-button yellow">{{ $order->service->categories->title }}</span></h3>
                                         <!-- Job Listing Footer -->
                                         <div class="job-listing-footer">
                                             <ul>
@@ -45,7 +43,7 @@
                             <div class="buttons-to-right always-visible">
                                 <a href="{{ route('download', ['file' => $order->service->product]) }}"
                                    class="button ripple-effect"><i class="fal fa-cloud-download"></i> Скачать файл</a>
-                                <a href="{{ route('user.sell', $order->service->id) }}"
+                                <a href="{{ route('order.buy.complete', $order->id) }}"
                                    class="button gray ripple-effect ico"><i class="fad fa-eye"></i></a>
                             </div>
                         </li>

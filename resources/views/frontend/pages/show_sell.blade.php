@@ -26,7 +26,7 @@
 
                             <div class="salary-box">
                                 <div class="salary-type">Общая сумма</div>
-                                <div class="salary-amount">@money($amount) <i class="fad fa-ruble-sign"></i> </div>
+                                <div class="salary-amount">{{ number_format($amount, 0 , ',' , '') }} <i class="fad fa-ruble-sign"></i> </div>
                             </div>
                         </div>
                     </div>

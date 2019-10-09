@@ -31,6 +31,7 @@ class OrderController extends Controller
         ]);
 
         $service->user->increment('balance', $service->amount);
+
         auth()->user()->decrement('balance', $service->amount);
 
         return redirect()->route('order.buy.complete', $order->id);
@@ -41,7 +42,7 @@ class OrderController extends Controller
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
 
-    public function complete($order)
+    public function openOrder($order)
     {
         $order = Order::find($order);
 
@@ -71,16 +72,4 @@ class OrderController extends Controller
         return view('dashboard.orders.orders_seller', compact('orders'));
     }
 
-    public function review(Request $request, $id) {
-
-        $order = Order::find($id);
-
-        Review::create([
-            'seller_id' => $order->service->user->id,
-            'user_id' => auth()->user()->id,
-            'text' => $request->input('text'),
-        ]);
-
-        return redirect()->back()->with('success' , 'Отзыв отправлен');
-    }
 }

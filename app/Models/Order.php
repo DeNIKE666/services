@@ -22,5 +22,12 @@ class Order extends Model
         return $this->hasOne(User::class , 'id' , 'user_buy');
     }
 
+    public function userSeller() {
+        return $this->hasOne(User::class , 'id' , 'user_seller');
+    }
+
+    public function existsReview() {
+        return $this->hasOne(Review::class , 'order_id');
+    }
 
 }

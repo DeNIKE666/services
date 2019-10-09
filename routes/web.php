@@ -41,10 +41,15 @@ Route::prefix('dashboard')->namespace('Dashboard')->middleware('auth')->group(fu
 
     Route::prefix('order')->group(function () {
         Route::get('/service/{id}' , 'OrderController@order')->name('order.create');
-        Route::get('/open/{id}' , 'OrderController@complete')->name('order.buy.complete');
+        Route::get('/open/{id}' , 'OrderController@openOrder')->name('order.buy.complete');
         Route::get('/lists/orders' , 'OrderController@listsOrderBuyed')->name('order.lists.buyed');
         Route::get('/lists/selled' , 'OrderController@listsOrderSeller')->name('order.lists.seller');
-        Route::post('/review/{id}' , 'OrderController@review')->name('order.review');
+
+        Route::prefix('review')->group(function () {
+            Route::post('/order/create/{id}' , 'ReviewsController@create')->name('order.review');
+            Route::post('/order/edit/{id}' , 'ReviewsController@edit')->name('order.review.edit');
+        });
+
     });
 });
 

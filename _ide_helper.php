@@ -3,7 +3,7 @@
 
 /**
  * A helper file for Laravel 5, to provide autocomplete information to your IDE
- * Generated for Laravel 5.8.35 on 2019-10-08 15:57:04.
+ * Generated for Laravel 5.8.35 on 2019-10-09 14:34:41.
  *
  * This file should not be included in your code, only analyzed by your IDE!
  *
@@ -14683,229 +14683,350 @@ namespace Illuminate\Support {
  
 }
 
-namespace UxWeb\SweetAlert { 
+namespace RealRashid\SweetAlert\Facades { 
 
     /**
      * 
      *
      */ 
-    class SweetAlert {
+    class Alert {
         
         /**
-         * Display an alert message with a text and an optional title.
+         * Sets all default config options for middleware alert.
+         *
+         * @return \RealRashid\SweetAlert\$config 
+         * @static 
+         */ 
+        public static function middleware()
+        {
+                        /** @var \RealRashid\SweetAlert\Toaster $instance */
+                        return $instance->middleware();
+        }
+        
+        /**
+         * Flash a message.
+         *
+         * @param string $title
+         * @param string $text
+         * @param array $type
+         * @return void 
+         * @static 
+         */ 
+        public static function alert($title = '', $text = '', $type = null)
+        {
+                        /** @var \RealRashid\SweetAlert\Toaster $instance */
+                        $instance->alert($title, $text, $type);
+        }
+        
+        /**
          * 
-         * By default the alert is not typed.
          *
-         * @param string $text
-         * @param string $title
-         * @param string $icon
-         * @return \UxWeb\SweetAlert\SweetAlertNotifier $this
          * @static 
          */ 
-        public static function message($text = '', $title = null, $icon = null)
+        public static function success($title = '', $text = '')
         {
-                        /** @var \UxWeb\SweetAlert\SweetAlertNotifier $instance */
-                        return $instance->message($text, $title, $icon);
+                        /** @var \RealRashid\SweetAlert\Toaster $instance */
+                        return $instance->success($title, $text);
         }
         
         /**
-         * Display a not typed alert message with a text and a title.
+         * 
          *
-         * @param string $text
-         * @param string $title
-         * @return \UxWeb\SweetAlert\SweetAlertNotifier $this
          * @static 
          */ 
-        public static function basic($text, $title)
+        public static function info($title = '', $text = '')
         {
-                        /** @var \UxWeb\SweetAlert\SweetAlertNotifier $instance */
-                        return $instance->basic($text, $title);
+                        /** @var \RealRashid\SweetAlert\Toaster $instance */
+                        return $instance->info($title, $text);
         }
         
         /**
-         * Display an info typed alert message with a text and an optional title.
+         * 
          *
-         * @param string $text
-         * @param string $title
-         * @return \UxWeb\SweetAlert\SweetAlertNotifier $this
          * @static 
          */ 
-        public static function info($text, $title = '')
+        public static function warning($title = '', $text = '')
         {
-                        /** @var \UxWeb\SweetAlert\SweetAlertNotifier $instance */
-                        return $instance->info($text, $title);
+                        /** @var \RealRashid\SweetAlert\Toaster $instance */
+                        return $instance->warning($title, $text);
         }
         
         /**
-         * Display a success typed alert message with a text and an optional title.
+         * 
          *
-         * @param string $text
-         * @param string $title
-         * @return \UxWeb\SweetAlert\SweetAlertNotifier $this
          * @static 
          */ 
-        public static function success($text, $title = '')
+        public static function question($title = '', $text = '')
         {
-                        /** @var \UxWeb\SweetAlert\SweetAlertNotifier $instance */
-                        return $instance->success($text, $title);
+                        /** @var \RealRashid\SweetAlert\Toaster $instance */
+                        return $instance->question($title, $text);
         }
         
         /**
-         * Display an error typed alert message with a text and an optional title.
+         * 
          *
-         * @param string $text
-         * @param string $title
-         * @return \UxWeb\SweetAlert\SweetAlertNotifier $this
          * @static 
          */ 
-        public static function error($text, $title = '')
+        public static function error($title = '', $text = '')
         {
-                        /** @var \UxWeb\SweetAlert\SweetAlertNotifier $instance */
-                        return $instance->error($text, $title);
+                        /** @var \RealRashid\SweetAlert\Toaster $instance */
+                        return $instance->error($title, $text);
         }
         
         /**
-         * Display a warning typed alert message with a text and an optional title.
+         * 
          *
-         * @param string $text
-         * @param string $title
-         * @return \UxWeb\SweetAlert\SweetAlertNotifier $this
          * @static 
          */ 
-        public static function warning($text, $title = '')
+        public static function image($title, $text, $imageUrl, $imageWidth = 400, $imageHeight = 200, $imageAlt = '')
         {
-                        /** @var \UxWeb\SweetAlert\SweetAlertNotifier $instance */
-                        return $instance->warning($text, $title);
+                        /** @var \RealRashid\SweetAlert\Toaster $instance */
+                        return $instance->image($title, $text, $imageUrl, $imageWidth, $imageHeight, $imageAlt);
         }
         
         /**
-         * Set the duration for this alert until it autocloses.
+         * 
          *
-         * @param int $milliseconds
-         * @return \UxWeb\SweetAlert\SweetAlertNotifier $this
          * @static 
          */ 
-        public static function autoclose($milliseconds = null)
+        public static function html($title = '', $code = '', $type = '')
         {
-                        /** @var \UxWeb\SweetAlert\SweetAlertNotifier $instance */
-                        return $instance->autoclose($milliseconds);
+                        /** @var \RealRashid\SweetAlert\Toaster $instance */
+                        return $instance->html($title, $code, $type);
         }
         
         /**
-         * Add a confirmation button to the alert.
+         * 
          *
-         * @param string $buttonText
-         * @return \UxWeb\SweetAlert\SweetAlertNotifier $this
          * @static 
          */ 
-        public static function confirmButton($buttonText = 'OK', $overrides = array())
+        public static function toast($title = '', $type = '')
         {
-                        /** @var \UxWeb\SweetAlert\SweetAlertNotifier $instance */
-                        return $instance->confirmButton($buttonText, $overrides);
+                        /** @var \RealRashid\SweetAlert\Toaster $instance */
+                        return $instance->toast($title, $type);
         }
         
         /**
-         * Add a cancel button to the alert.
+         * 
          *
-         * @param string $buttonText
-         * @param array $overrides
-         * @return \UxWeb\SweetAlert\SweetAlertNotifier $this
          * @static 
          */ 
-        public static function cancelButton($buttonText = 'Cancel', $overrides = array())
+        public static function toToast($position = '')
         {
-                        /** @var \UxWeb\SweetAlert\SweetAlertNotifier $instance */
-                        return $instance->cancelButton($buttonText, $overrides);
+                        /** @var \RealRashid\SweetAlert\Toaster $instance */
+                        return $instance->toToast($position);
         }
         
         /**
-         * Add a new custom button to the alert.
+         * 
          *
-         * @param string $key
-         * @param string $buttonText
-         * @param array $overrides
-         * @return \UxWeb\SweetAlert\SweetAlertNotifier $this
          * @static 
          */ 
-        public static function addButton($key, $buttonText, $overrides = array())
+        public static function toHtml()
         {
-                        /** @var \UxWeb\SweetAlert\SweetAlertNotifier $instance */
-                        return $instance->addButton($key, $buttonText, $overrides);
+                        /** @var \RealRashid\SweetAlert\Toaster $instance */
+                        return $instance->toHtml();
         }
         
         /**
-         * Toggle close the alert message when clicking outside.
+         * 
          *
-         * @param string $buttonText
-         * @return \UxWeb\SweetAlert\SweetAlertNotifier $this
          * @static 
          */ 
-        public static function closeOnClickOutside($value = true)
+        public static function addImage($imageUrl)
         {
-                        /** @var \UxWeb\SweetAlert\SweetAlertNotifier $instance */
-                        return $instance->closeOnClickOutside($value);
+                        /** @var \RealRashid\SweetAlert\Toaster $instance */
+                        return $instance->addImage($imageUrl);
         }
         
         /**
-         * Make this alert persistent with a confirmation button.
+         * 
          *
-         * @param string $buttonText
-         * @return \UxWeb\SweetAlert\SweetAlertNotifier $this
          * @static 
          */ 
-        public static function persistent($buttonText = 'OK')
+        public static function footer($code)
         {
-                        /** @var \UxWeb\SweetAlert\SweetAlertNotifier $instance */
-                        return $instance->persistent($buttonText);
+                        /** @var \RealRashid\SweetAlert\Toaster $instance */
+                        return $instance->footer($code);
         }
         
         /**
-         * Make Message HTML view.
+         * 
          *
-         * @param bool|true $html
-         * @return \UxWeb\SweetAlert\SweetAlertNotifier $this
          * @static 
          */ 
-        public static function html()
+        public static function position($position = 'top-end')
         {
-                        /** @var \UxWeb\SweetAlert\SweetAlertNotifier $instance */
-                        return $instance->html();
+                        /** @var \RealRashid\SweetAlert\Toaster $instance */
+                        return $instance->position($position);
         }
         
         /**
-         * Return the current alert configuration.
+         * 
          *
-         * @return array 
          * @static 
          */ 
-        public static function getConfig($key = null)
+        public static function width($width = '32rem')
         {
-                        /** @var \UxWeb\SweetAlert\SweetAlertNotifier $instance */
-                        return $instance->getConfig($key);
+                        /** @var \RealRashid\SweetAlert\Toaster $instance */
+                        return $instance->width($width);
         }
         
         /**
-         * Customize alert configuration "by hand".
+         * 
          *
-         * @return array 
          * @static 
          */ 
-        public static function setConfig($config = array())
+        public static function padding($padding = '1.25rem')
         {
-                        /** @var \UxWeb\SweetAlert\SweetAlertNotifier $instance */
-                        return $instance->setConfig($config);
+                        /** @var \RealRashid\SweetAlert\Toaster $instance */
+                        return $instance->padding($padding);
         }
         
         /**
-         * Return the current alert configuration as Json.
+         * 
          *
-         * @return string 
          * @static 
          */ 
-        public static function getJsonConfig()
+        public static function background($background = '#fff')
         {
-                        /** @var \UxWeb\SweetAlert\SweetAlertNotifier $instance */
-                        return $instance->getJsonConfig();
+                        /** @var \RealRashid\SweetAlert\Toaster $instance */
+                        return $instance->background($background);
+        }
+        
+        /**
+         * 
+         *
+         * @static 
+         */ 
+        public static function focusConfirm($focus = true)
+        {
+                        /** @var \RealRashid\SweetAlert\Toaster $instance */
+                        return $instance->focusConfirm($focus);
+        }
+        
+        /**
+         * 
+         *
+         * @static 
+         */ 
+        public static function focusCancel($focus = false)
+        {
+                        /** @var \RealRashid\SweetAlert\Toaster $instance */
+                        return $instance->focusCancel($focus);
+        }
+        
+        /**
+         * 
+         *
+         * @static 
+         */ 
+        public static function animation($animation = true)
+        {
+                        /** @var \RealRashid\SweetAlert\Toaster $instance */
+                        return $instance->animation($animation);
+        }
+        
+        /**
+         * 
+         *
+         * @static 
+         */ 
+        public static function persistent($showConfirmBtn = true, $showCloseBtn = false)
+        {
+                        /** @var \RealRashid\SweetAlert\Toaster $instance */
+                        return $instance->persistent($showConfirmBtn, $showCloseBtn);
+        }
+        
+        /**
+         * 
+         *
+         * @static 
+         */ 
+        public static function autoClose($milliseconds = 5000)
+        {
+                        /** @var \RealRashid\SweetAlert\Toaster $instance */
+                        return $instance->autoClose($milliseconds);
+        }
+        
+        /**
+         * 
+         *
+         * @static 
+         */ 
+        public static function showConfirmButton($btnText = 'Ok', $btnColor = '#3085d6')
+        {
+                        /** @var \RealRashid\SweetAlert\Toaster $instance */
+                        return $instance->showConfirmButton($btnText, $btnColor);
+        }
+        
+        /**
+         * 
+         *
+         * @static 
+         */ 
+        public static function showCancelButton($btnText = 'Cancel', $btnColor = '#aaa')
+        {
+                        /** @var \RealRashid\SweetAlert\Toaster $instance */
+                        return $instance->showCancelButton($btnText, $btnColor);
+        }
+        
+        /**
+         * 
+         *
+         * @static 
+         */ 
+        public static function showCloseButton($closeButtonAriaLabel = 'aria-label')
+        {
+                        /** @var \RealRashid\SweetAlert\Toaster $instance */
+                        return $instance->showCloseButton($closeButtonAriaLabel);
+        }
+        
+        /**
+         * 
+         *
+         * @static 
+         */ 
+        public static function hideCloseButton()
+        {
+                        /** @var \RealRashid\SweetAlert\Toaster $instance */
+                        return $instance->hideCloseButton();
+        }
+        
+        /**
+         * Reverse buttons position
+         *
+         * @return \RealRashid\SweetAlert\RealRashid\SweetAlert\Toaster::alert(); by: https://github.com/Faber44/
+         * @static 
+         */ 
+        public static function reverseButtons()
+        {
+                        /** @var \RealRashid\SweetAlert\Toaster $instance */
+                        return $instance->reverseButtons();
+        }
+        
+        /**
+         * Flash the config options for alert.
+         *
+         * @return void 
+         * @static 
+         */ 
+        public static function flash()
+        {
+                        /** @var \RealRashid\SweetAlert\Toaster $instance */
+                        $instance->flash();
+        }
+        
+        /**
+         * Build Flash config options for flashing.
+         *
+         * @return void 
+         * @static 
+         */ 
+        public static function buildConfig()
+        {
+                        /** @var \RealRashid\SweetAlert\Toaster $instance */
+                        $instance->buildConfig();
         }
          
     }
@@ -18614,7 +18735,7 @@ namespace  {
 
     class View extends \Illuminate\Support\Facades\View {}
 
-    class Alert extends \UxWeb\SweetAlert\SweetAlert {}
+    class Alert extends \RealRashid\SweetAlert\Facades\Alert {}
 
     class Debugbar extends \Barryvdh\Debugbar\Facade {}
 

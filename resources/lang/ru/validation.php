@@ -162,6 +162,7 @@ return [
         'email'                 => 'E-Mail адрес',
         'profile_type'          => 'Тип профиля',
         'avatar'                => 'Аватар',
+        'about'                 => 'О пользователе',
         'password'              => 'Пароль',
         'password_confirmation' => 'Подтверждение пароля',
         'category_id'           => 'Категория',
