@@ -15,14 +15,15 @@
     <!-- Header Container / End -->
 
     <!-- BreadCrumbs -->
+    <div class="content-wrapper">
 
       @yield('breadcrumbs')
 
    <!-- BreadCrumbs / End -->
 
    <!-- Content / End -->
-
       @yield('content')
+    </div>
 
    <!-- Content / End -->
 

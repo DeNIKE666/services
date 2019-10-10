@@ -74,4 +74,12 @@ class User extends Authenticatable
         return $this->hasMany(Review::class , 'seller_id' , 'id');
     }
 
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+
+    public function messages() {
+        return $this->hasMany(Message::class);
+    }
+
 }

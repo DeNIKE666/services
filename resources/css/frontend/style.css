@@ -311,7 +311,13 @@ header.fullwidth .container {
         background-color: #fff;
         color: #333
     }
+
+    .content-wrapper {
+        min-height: 850px;
+    }
+
 }
+
 
 .header-notifications {
     height: 100%;
@@ -2076,6 +2082,7 @@ em.mm-counter + a.mm-fullsubopen + a, em.mm-counter + a.mm-fullsubopen + span {
     #header-container.cloned {
         display: none
     }
+
 }
 
 @media (max-width: 768px) {
@@ -2927,6 +2934,7 @@ body #backtotop a {
     .single-page-header .right-side {
         max-width: 30%
     }
+
 }
 
 .single-page-header .header-image a {
@@ -3055,7 +3063,7 @@ body #backtotop a {
 
 .single-page-header .header-details li .star-rating {
     position: relative;
-    top: 30px;
+    top: 6px
 }
 
 .single-page-header .header-details ul li img.flag {

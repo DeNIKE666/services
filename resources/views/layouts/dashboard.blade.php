@@ -7,7 +7,7 @@
 
 <!-- Wrapper -->
 <div id="wrapper">
-
+    <div id="dashboard">
     <!-- Header Container  -->
 
        @include('__includes.dashboard.header.user_header')
@@ -61,12 +61,13 @@
 
     </div>
     <!-- Dashboard Container / End -->
-
+    </div>
 </div>
 <!-- Wrapper / End -->
 
     <script src="{{ mix('assets/frontend/js/frontend.js') }}"></script>
     <script src="{{ mix('assets/frontend/js/plugins.js') }}"></script>
+    <script src="{{ asset('js/app.js') }}"></script>
 
     @include('sweetalert::alert')
 

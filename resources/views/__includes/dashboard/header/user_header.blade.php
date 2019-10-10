@@ -44,7 +44,9 @@
                                     </div>
 
                                     <div class="user-name">
-                                        {{ $user->name }}
+                                        <span id="user">
+                                            {{ $user->name }}
+                                        </span>
                                         <span>{{ $user->profile_type == 0 ? 'Покупатель': 'Продавец' }}</span>
                                     </div>
 

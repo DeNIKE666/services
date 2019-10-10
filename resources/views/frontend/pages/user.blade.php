@@ -36,16 +36,15 @@
 
                 <!-- Page Content -->
                 <div class="single-page-section">
-                    <h3 class="margin-bottom-25">О продавце</h3>
-
+                    <h3 class="margin-bottom-25">О  {{ $user->profile_type == 0 ? 'покупателе' : 'продавце' }}</h3>
                     <p>{{ $user->about ?? 'ПОЛЬЗОВАТЕЛЬ НИЧЕГО НЕ НАПИСАЛ О СЕБЕ' }}</p>
-
                 </div>
 
+                @if ($user->profile_type == 1)
                 <!-- Boxed List -->
                 <div class="boxed-list margin-bottom-60">
                     <div class="boxed-list-headline">
-                        <h3><i class="fad fa-thumbs-up"></i> Отзывы заказчиков ({{ $user->reviews->count() }})</h3>
+                        <h3><i class="fad fa-thumbs-up"></i> Отзывы ({{ $user->reviews->count() }})</h3>
                     </div>
                     <ul class="boxed-list-ul">
                         @forelse ($reviews as $review)
@@ -70,8 +69,8 @@
                     </ul>
                 </div>
                 <!-- Boxed List / End -->
-
                 {{ $reviews->links('__includes.frontend.paginator') }}
+              @endif
 
             </div>
 

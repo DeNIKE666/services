@@ -29,14 +29,15 @@ class FrontendControllerCategories extends Controller
 
         $ids = Category::descendantsOf($id)->pluck('id');
 
-        if ($id == null) {
-            $services = Service::whereIn('category_id', $categories)->paginate(10);
-        } else {
+        if (is_null($id)) $services = Service::whereIn('category_id', $categories)->paginate(10);
 
+        else {
             $services = $this->repository->scopeQuery(function ($query) use ($ids, $id, $categories) {
                 return $query->whereIn('category_id', $ids)
-                    ->orWhere('category_id', $id)->orderBy('updated_at', 'desc');
-            })->paginate(10);
+                    ->orWhere('category_id', $id);
+            }, function ($query) {
+                dd($query);
+            })->orderBy('updated_at', 'desc')->paginate(10);
         }
 
         return view('frontend.pages.categories')->with([

@@ -4,6 +4,8 @@ namespace App\Http\Controllers\Dashboard;
 
 use App\Criteria\OrderCriteria;
 use App\Criteria\OrderSellerCriteria;
+use App\Events\Example;
+use App\Events\MessageSend;
 use App\Models\Order;
 use App\Models\Review;
 use App\Models\Service\Service;
@@ -24,6 +26,13 @@ class OrderController extends Controller
     public function __construct(OrderRepositoryEloquent $repositoryEloquent)
     {
         $this->repository = $repositoryEloquent;
+    }
+
+    public function createOrder($id) {
+
+        $service = Service::find($id);
+
+        return view('dashboard.orders.create_order', compact('service'));
     }
 
     /**

@@ -5,7 +5,7 @@ namespace PHPSTORM_META {
 
    /**
     * PhpStorm Meta file, to provide autocomplete information for PhpStorm
-    * Generated on 2019-10-09 14:34:41.
+    * Generated on 2019-10-10 16:05:31.
     *
     * @author Barry vd. Heuvel <barryvdh@gmail.com>
     * @see https://github.com/barryvdh/laravel-ide-helper
@@ -36,6 +36,7 @@ namespace PHPSTORM_META {
         'NunoMaduro\Collision\Contracts\Adapters\Phpunit\Listener' => \NunoMaduro\Collision\Adapters\Phpunit\Listener::class,
         'NunoMaduro\Collision\Contracts\Provider' => \NunoMaduro\Collision\Provider::class,
         'RealRashid\SweetAlert\Storage\SessionStore' => \RealRashid\SweetAlert\Storage\AlertSessionStore::class,
+        'Spatie\Cors\CorsProfile\CorsProfile' => \Spatie\Cors\CorsProfile\DefaultProfile::class,
         'alert' => \RealRashid\SweetAlert\Toaster::class,
         'auth' => \Illuminate\Auth\AuthManager::class,
         'auth.driver' => \Illuminate\Auth\SessionGuard::class,
@@ -185,6 +186,7 @@ namespace PHPSTORM_META {
         'NunoMaduro\Collision\Contracts\Adapters\Phpunit\Listener' => \NunoMaduro\Collision\Adapters\Phpunit\Listener::class,
         'NunoMaduro\Collision\Contracts\Provider' => \NunoMaduro\Collision\Provider::class,
         'RealRashid\SweetAlert\Storage\SessionStore' => \RealRashid\SweetAlert\Storage\AlertSessionStore::class,
+        'Spatie\Cors\CorsProfile\CorsProfile' => \Spatie\Cors\CorsProfile\DefaultProfile::class,
         'alert' => \RealRashid\SweetAlert\Toaster::class,
         'auth' => \Illuminate\Auth\AuthManager::class,
         'auth.driver' => \Illuminate\Auth\SessionGuard::class,
@@ -334,6 +336,7 @@ namespace PHPSTORM_META {
         'NunoMaduro\Collision\Contracts\Adapters\Phpunit\Listener' => \NunoMaduro\Collision\Adapters\Phpunit\Listener::class,
         'NunoMaduro\Collision\Contracts\Provider' => \NunoMaduro\Collision\Provider::class,
         'RealRashid\SweetAlert\Storage\SessionStore' => \RealRashid\SweetAlert\Storage\AlertSessionStore::class,
+        'Spatie\Cors\CorsProfile\CorsProfile' => \Spatie\Cors\CorsProfile\DefaultProfile::class,
         'alert' => \RealRashid\SweetAlert\Toaster::class,
         'auth' => \Illuminate\Auth\AuthManager::class,
         'auth.driver' => \Illuminate\Auth\SessionGuard::class,
@@ -483,6 +486,7 @@ namespace PHPSTORM_META {
         'NunoMaduro\Collision\Contracts\Adapters\Phpunit\Listener' => \NunoMaduro\Collision\Adapters\Phpunit\Listener::class,
         'NunoMaduro\Collision\Contracts\Provider' => \NunoMaduro\Collision\Provider::class,
         'RealRashid\SweetAlert\Storage\SessionStore' => \RealRashid\SweetAlert\Storage\AlertSessionStore::class,
+        'Spatie\Cors\CorsProfile\CorsProfile' => \Spatie\Cors\CorsProfile\DefaultProfile::class,
         'alert' => \RealRashid\SweetAlert\Toaster::class,
         'auth' => \Illuminate\Auth\AuthManager::class,
         'auth.driver' => \Illuminate\Auth\SessionGuard::class,
@@ -632,6 +636,7 @@ namespace PHPSTORM_META {
         'NunoMaduro\Collision\Contracts\Adapters\Phpunit\Listener' => \NunoMaduro\Collision\Adapters\Phpunit\Listener::class,
         'NunoMaduro\Collision\Contracts\Provider' => \NunoMaduro\Collision\Provider::class,
         'RealRashid\SweetAlert\Storage\SessionStore' => \RealRashid\SweetAlert\Storage\AlertSessionStore::class,
+        'Spatie\Cors\CorsProfile\CorsProfile' => \Spatie\Cors\CorsProfile\DefaultProfile::class,
         'alert' => \RealRashid\SweetAlert\Toaster::class,
         'auth' => \Illuminate\Auth\AuthManager::class,
         'auth.driver' => \Illuminate\Auth\SessionGuard::class,
@@ -781,6 +786,7 @@ namespace PHPSTORM_META {
         'NunoMaduro\Collision\Contracts\Adapters\Phpunit\Listener' => \NunoMaduro\Collision\Adapters\Phpunit\Listener::class,
         'NunoMaduro\Collision\Contracts\Provider' => \NunoMaduro\Collision\Provider::class,
         'RealRashid\SweetAlert\Storage\SessionStore' => \RealRashid\SweetAlert\Storage\AlertSessionStore::class,
+        'Spatie\Cors\CorsProfile\CorsProfile' => \Spatie\Cors\CorsProfile\DefaultProfile::class,
         'alert' => \RealRashid\SweetAlert\Toaster::class,
         'auth' => \Illuminate\Auth\AuthManager::class,
         'auth.driver' => \Illuminate\Auth\SessionGuard::class,
@@ -930,6 +936,7 @@ namespace PHPSTORM_META {
         'NunoMaduro\Collision\Contracts\Adapters\Phpunit\Listener' => \NunoMaduro\Collision\Adapters\Phpunit\Listener::class,
         'NunoMaduro\Collision\Contracts\Provider' => \NunoMaduro\Collision\Provider::class,
         'RealRashid\SweetAlert\Storage\SessionStore' => \RealRashid\SweetAlert\Storage\AlertSessionStore::class,
+        'Spatie\Cors\CorsProfile\CorsProfile' => \Spatie\Cors\CorsProfile\DefaultProfile::class,
         'alert' => \RealRashid\SweetAlert\Toaster::class,
         'auth' => \Illuminate\Auth\AuthManager::class,
         'auth.driver' => \Illuminate\Auth\SessionGuard::class,
@@ -1079,6 +1086,7 @@ namespace PHPSTORM_META {
         'NunoMaduro\Collision\Contracts\Adapters\Phpunit\Listener' => \NunoMaduro\Collision\Adapters\Phpunit\Listener::class,
         'NunoMaduro\Collision\Contracts\Provider' => \NunoMaduro\Collision\Provider::class,
         'RealRashid\SweetAlert\Storage\SessionStore' => \RealRashid\SweetAlert\Storage\AlertSessionStore::class,
+        'Spatie\Cors\CorsProfile\CorsProfile' => \Spatie\Cors\CorsProfile\DefaultProfile::class,
         'alert' => \RealRashid\SweetAlert\Toaster::class,
         'auth' => \Illuminate\Auth\AuthManager::class,
         'auth.driver' => \Illuminate\Auth\SessionGuard::class,

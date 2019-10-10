@@ -41,7 +41,8 @@ Route::prefix('dashboard')->namespace('Dashboard')->middleware('auth')->group(fu
     });
 
     Route::prefix('order')->group(function () {
-        Route::get('/service/{id}' , 'OrderController@order')->name('order.create');
+        Route::get('/create/{id}' , 'OrderController@createOrder')->name('order.create');
+     //   Route::get('/service/{id}' , 'OrderController@order')->name('order.create');
         Route::get('/open/{id}' , 'OrderController@openOrder')->name('order.buy.complete');
         Route::get('/lists/orders' , 'OrderController@listsOrderBuyed')->name('order.lists.buyed');
         Route::get('/lists/selled' , 'OrderController@listsOrderSeller')->name('order.lists.seller');
@@ -67,6 +68,21 @@ Route::prefix('admin')->namespace('Admin')->group(function () {
 
     Route::resource('categories', 'CategoriesController')->except('delete');
 
+});
+
+Route::get('/messages', function () {
+    return \App\Models\Message::with('user')->get()->toJson();
+});
+
+Route::post('/messages/send', function (Request $request) {
+
+    $message = auth()->user()->messages()->create([
+        'message' => request()->get('message'),
+    ]);
+
+    event(new \App\Events\PusherEvent($message , auth()->user()));
+
+    return $message;
 });
 
 Auth::routes();

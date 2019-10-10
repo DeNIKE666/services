@@ -71,3 +71,5 @@ mix.copy('resources/assets/frontend/img', 'public/assets/frontend/img')
 mix.copy('resources/assets/frontend/plugins' , 'public/assets/frontend/js/plugins')
 
 mix.js('resources/js/frontend/plugins.js', 'public/assets/frontend/js/plugins.js');
+
+mix.js('resources/js/app.js', 'public/js');
