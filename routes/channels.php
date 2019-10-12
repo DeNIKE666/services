@@ -11,6 +11,6 @@
 |
 */
 
-Broadcast::channel('example-channel', function ($user) {
-    return $user;
+Broadcast::channel('dialog.2', function ($user, $userId) {
+    return $user->id === $userId;
 });

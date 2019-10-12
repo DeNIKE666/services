@@ -51,8 +51,12 @@ Route::prefix('dashboard')->namespace('Dashboard')->middleware('auth')->group(fu
             Route::post('/order/create/{id}' , 'ReviewsController@create')->name('order.review');
             Route::post('/order/edit/{id}' , 'ReviewsController@edit')->name('order.review.edit');
         });
-
     });
+
+    Route::prefix('dialog')->group(function () {
+        Route::get('/', 'ChatController@show')->name('chat.create');
+    });
+
 });
 
 Route::prefix('admin')->namespace('Admin')->group(function () {
@@ -68,21 +72,8 @@ Route::prefix('admin')->namespace('Admin')->group(function () {
 
     Route::resource('categories', 'CategoriesController')->except('delete');
 
+
 });
 
-Route::get('/messages', function () {
-    return \App\Models\Message::with('user')->get()->toJson();
-});
-
-Route::post('/messages/send', function (Request $request) {
-
-    $message = auth()->user()->messages()->create([
-        'message' => request()->get('message'),
-    ]);
-
-    event(new \App\Events\PusherEvent($message , auth()->user()));
-
-    return $message;
-});
 
 Auth::routes();

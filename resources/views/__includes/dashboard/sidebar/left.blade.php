@@ -27,6 +27,7 @@
                             </ul>
                         </li>
                         <li class=""><a href="{{ route('order.lists.seller') }}"><i class="fal fa-shopping-cart"></i>  Мои продажи </a></li>
+                        <li class=""><a href=""><i class="fal fa-shopping-cart"></i>  Диалоги  </a></li>
                     </ul>
                 </div>
             </div>

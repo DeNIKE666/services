@@ -10,7 +10,9 @@
 
     <hr>
 
-    <chat-log :messages="messages"></chat-log>
-    <chat-composer v-on:messagesent="addMessage"></chat-composer>
+
+    <div id="chat">
+        <chat-component :user="{{ auth()->user() }}" :seller="{{ $service }}"></chat-component>
+    </div>
 
 @endsection
