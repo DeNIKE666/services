@@ -29,7 +29,7 @@
         "pusher-js": "^5.0.2",
         "sweetalert2": "^8.18.0",
         "tinymce": "^5.0.16",
-        "yarn": "^1.17.3",
+        "yarn": "^1.22.0",
         "yarn-global": "^1.1.0"
     }
 }
